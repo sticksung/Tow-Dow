@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.towdow.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/login_fragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_signupFragment"
+            app:destination="@id/signupFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="com.example.towdow.SignupFragment"
+        android:label="signup_fragment"
+        tools:layout="@layout/signup_fragment" >
+        <action
+            android:id="@+id/action_signupFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.towdow.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_forumHomeFragment"
+            app:destination="@id/forumHomeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_forumCreateFragment"
+            app:destination="@id/forumCreateFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.towdow.SearchFragment"
+        android:label="search_fragment"
+        tools:layout="@layout/search_fragment" >
+        <action
+            android:id="@+id/action_searchFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.towdow.ProfileFragment"
+        android:label="profile_fragment"
+        tools:layout="@layout/profile_fragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_searchFragment2"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forumHomeFragment"
+        android:name="com.example.towdow.ForumHomeFragment"
+        android:label="forum_home_fragment"
+        tools:layout="@layout/forum_home_fragment" >
+        <action
+            android:id="@+id/action_forumHomeFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_forumHomeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_forumHomeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_forumHomeFragment_to_categoryHomeFragment"
+            app:destination="@id/categoryHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryHomeFragment"
+        android:name="com.example.towdow.CategoryHomeFragment"
+        android:label="category_home_fragment"
+        tools:layout="@layout/category_home_fragment" >
+        <action
+            android:id="@+id/action_categoryHomeFragment_to_forumPostFragment"
+            app:destination="@id/forumPostFragment" />
+        <action
+            android:id="@+id/action_categoryHomeFragment_to_createPostFragment"
+            app:destination="@id/createPostFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forumPostFragment"
+        android:name="com.example.towdow.ForumPostFragment"
+        android:label="forum_post_fragment"
+        tools:layout="@layout/forum_post_fragment" />
+    <fragment
+        android:id="@+id/forumCreateFragment"
+        android:name="com.example.towdow.ForumCreateFragment"
+        android:label="forum_create_fragment"
+        tools:layout="@layout/forum_create_fragment" />
+    <fragment
+        android:id="@+id/createPostFragment"
+        android:name="com.example.towdow.CreatePostFragment"
+        android:label="create_post_fragment"
+        tools:layout="@layout/create_post_fragment" />
+</navigation>
