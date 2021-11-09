@@ -4,4 +4,104 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment"/>
+    tools:context=".ProfileFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/my_profile_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="178dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="175dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/my_username_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="176dp"
+            android:layout_marginTop="33dp"
+            android:layout_marginEnd="177dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/my_profile_text" />
+
+        <ImageView
+            android:id="@+id/my_profile_image"
+            android:layout_width="222dp"
+            android:layout_height="197dp"
+            android:layout_marginStart="94dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="95dp"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/my_username_text" />
+
+        <TextView
+            android:id="@+id/description_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="352dp"
+            android:layout_marginEnd="325dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/description_enter"
+            android:layout_width="373dp"
+            android:layout_height="206dp"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="31dp"
+            android:layout_marginEnd="21dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description_text" />
+
+        <ImageView
+            android:id="@+id/home_image"
+            android:layout_width="79dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="44dp"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintStart_toEndOf="@+id/search_image"
+            app:layout_constraintTop_toBottomOf="@+id/description_enter" />
+
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="79dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="84dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="3dp"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/home_image"
+            app:layout_constraintTop_toBottomOf="@+id/description_enter" />
+
+        <ImageView
+            android:id="@+id/search_image"
+            android:layout_width="79dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="44dp"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description_enter" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

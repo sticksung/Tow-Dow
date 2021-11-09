@@ -1,14 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ForumHomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
+        <TextView
+            android:id="@+id/forum_title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="173dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="180dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/forum_categories_list"
+            android:layout_width="412dp"
+            android:layout_height="533dp"
+            android:layout_marginTop="43dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/forum_title_text" />
+
+        <ImageView
+            android:id="@+id/search_image"
+            android:layout_width="79dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="56dp"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/forum_categories_list" />
+
+        <ImageView
+            android:id="@+id/home_image"
+            android:layout_width="79dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="86dp"
+            android:layout_marginTop="56dp"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintStart_toEndOf="@+id/search_image"
+            app:layout_constraintTop_toBottomOf="@+id/forum_categories_list" />
+
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="79dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="89dp"
+            android:layout_marginTop="56dp"
+            android:src="@drawable/ic_launcher_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/home_image"
+            app:layout_constraintTop_toBottomOf="@+id/forum_categories_list" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
