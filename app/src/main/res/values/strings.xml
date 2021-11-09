@@ -13,4 +13,10 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="submit">SUBMIT</string>
     <string name="enter_password">Enter Password</string>
+    <string-array name="Category">
+        <item>Select a category to post to</item>
+        <item>Announcements</item>
+        <item>General</item>
+        <item>Questions</item>
+    </string-array>
 </resources>

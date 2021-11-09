@@ -6,9 +6,29 @@
     tools:context=".ForumCreateFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create a new forum"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="90dp"
+            tools:layout_editor_absoluteY="33dp" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName3"
+            android:layout_width="341dp"
+            android:layout_height="46dp"
+            android:ems="10"
+            android:hint="Forum Name"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="32dp"
+            tools:layout_editor_absoluteY="94dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
