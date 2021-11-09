@@ -12,8 +12,8 @@
 
         <ImageView
             android:id="@+id/tow_dow_image"
-            android:layout_width="140dp"
-            android:layout_height="41dp"
+            android:layout_width="171dp"
+            android:layout_height="50dp"
             android:layout_marginStart="135dp"
             android:layout_marginTop="19dp"
             android:layout_marginEnd="136dp"
@@ -36,15 +36,15 @@
 
         <EditText
             android:id="@+id/username_enter"
-            android:layout_width="221dp"
+            android:layout_width="339dp"
             android:layout_height="42dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="21dp"
-            android:layout_marginEnd="185dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="40dp"
             android:ems="10"
+            android:hint="@string/enter_username"
             android:inputType="textPersonName"
             android:minHeight="48dp"
-            android:text="@string/enter_username"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/username_text" />
@@ -63,11 +63,11 @@
 
         <EditText
             android:id="@+id/password_enter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="185dp"
+            android:layout_width="339dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="40dp"
             android:ems="10"
             android:inputType="textPassword"
             android:minHeight="48dp"
@@ -77,8 +77,8 @@
 
         <Button
             android:id="@+id/signin_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="287dp"
+            android:layout_height="45dp"
             android:layout_marginStart="158dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="159dp"
@@ -92,22 +92,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="176dp"
-            android:layout_marginTop="62dp"
+            android:layout_marginTop="80dp"
             android:layout_marginEnd="177dp"
             android:text="@string/don_t_have_an_account_yet"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/signin_button" />
 
         <Button
             android:id="@+id/signup_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="287dp"
+            android:layout_height="45dp"
             android:layout_marginStart="158dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="159dp"
             android:text="@string/sign_up"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/no_account_text" />
 
