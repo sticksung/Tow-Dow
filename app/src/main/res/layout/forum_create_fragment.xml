@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,24 +12,71 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/create_forum_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create a new forum"
+            android:layout_marginStart="99dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="100dp"
+            android:text="@string/create_a_new_forum"
             android:textSize="24sp"
             android:textStyle="bold"
-            tools:layout_editor_absoluteX="90dp"
-            tools:layout_editor_absoluteY="33dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName3"
+            android:id="@+id/forum_name"
             android:layout_width="341dp"
             android:layout_height="46dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="38dp"
             android:ems="10"
-            android:hint="Forum Name"
+            android:hint="@string/forum_name"
             android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="32dp"
-            tools:layout_editor_absoluteY="94dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/create_forum_text" />
+
+        <Spinner
+            android:id="@+id/category1"
+            android:layout_width="357dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="27dp"
+            android:entries="@array/CategoryCreate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/forum_name" />
+
+        <EditText
+            android:id="@+id/description"
+            android:layout_width="349dp"
+            android:layout_height="92dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginEnd="30dp"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/a_short_description_of_the_forum"
+            android:inputType="textMultiLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/category1" />
+
+        <Button
+            android:id="@+id/create_forum"
+            android:layout_width="286dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="76dp"
+            android:text="@string/create_forum"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
