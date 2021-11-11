@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.example.towdow.databinding.LoginFragmentBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class LoginFragment : Fragment() {
@@ -20,6 +21,8 @@ class LoginFragment : Fragment() {
         _binding = LoginFragmentBinding.inflate(inflater,container, false)
         val v = binding.root
 
+        val bottomNavigationView: BottomNavigationView = requireActivity().findViewById(com.example.towdow.R.id.bottomNavigationView)
+        bottomNavigationView.visibility = View.GONE
 
         binding.towDowImage.setImageResource(R.drawable.logo)
         binding.signinButton.setOnClickListener{

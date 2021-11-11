@@ -34,36 +34,6 @@
             app:layout_constraintTop_toBottomOf="@+id/search_image_button" />
 
         <ImageView
-            android:id="@+id/search_image"
-            android:layout_width="79dp"
-            android:layout_height="75dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="113dp"
-            android:src="@drawable/ic_launcher_background"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/search_forums_list" />
-
-        <ImageView
-            android:id="@+id/home_image"
-            android:layout_width="79dp"
-            android:layout_height="75dp"
-            android:layout_marginStart="86dp"
-            android:layout_marginTop="113dp"
-            android:src="@drawable/ic_launcher_background"
-            app:layout_constraintStart_toEndOf="@+id/search_image"
-            app:layout_constraintTop_toBottomOf="@+id/search_forums_list" />
-
-        <ImageView
-            android:id="@+id/profile_image"
-            android:layout_width="79dp"
-            android:layout_height="75dp"
-            android:layout_marginTop="113dp"
-            android:layout_marginEnd="5dp"
-            android:src="@drawable/ic_launcher_background"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/search_forums_list" />
-
-        <ImageView
             android:id="@+id/search_image_button"
             android:layout_width="51dp"
             android:layout_height="49dp"
