@@ -22,4 +22,11 @@
     <string name="enter_password">Enter Password</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
+    <string name="create_a_new_category">Create a new Category</string>
+    <string name="enter_section_name">Enter Section Name</string>
+    <string name="enter_description">Enter description</string>
+    <string name="create_a_new_forum">Create a new Forum</string>
+    <string name="enter_forum_name">Enter forum name</string>
+    <string name="enter_a_description">Enter a description</string>
+    <string name="create_forum">Create Forum</string>
 </resources>

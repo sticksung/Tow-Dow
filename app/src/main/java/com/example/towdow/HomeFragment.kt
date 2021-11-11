@@ -31,8 +31,8 @@ class HomeFragment : Fragment() {
         val bottomNavigationView: BottomNavigationView = requireActivity().findViewById(com.example.towdow.R.id.bottomNavigationView)
         bottomNavigationView.visibility = View.VISIBLE
 
-        binding.plusImage.setImageResource(R.drawable.plus)
-        binding.plusImage.setOnClickListener {
+        binding.addCategoryImage.setImageResource(R.drawable.plus)
+        binding.addCategoryImage.setOnClickListener {
             view?.findNavController()?.navigate(R.id.action_homeFragment_to_forumCreateFragment)
         }
 //        binding.fab.setImageResource(R.drawable.plus)
