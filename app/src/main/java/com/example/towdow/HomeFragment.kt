@@ -30,8 +30,9 @@ class HomeFragment : Fragment() {
         val bottomNavigationView: BottomNavigationView = requireActivity().findViewById(com.example.towdow.R.id.bottomNavigationView)
         bottomNavigationView.visibility = View.VISIBLE
 
-        binding.fab.setImageResource(R.drawable.plus)
-     //   binding.homeImage.setImageResource(R.drawable.home)
+        binding.plusImage.setImageResource(R.drawable.plus)
+//        binding.fab.setImageResource(R.drawable.plus)
+      //   binding.homeImage.setImageResource(R.drawable.home)
       //  binding.searchImage.setImageResource(R.drawable.search)
       //  binding.profileImage.setImageResource(R.drawable.profile)
         return v
