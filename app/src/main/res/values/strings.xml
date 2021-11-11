@@ -20,4 +20,6 @@
         <item>Questions</item>
     </string-array>
     <string name="enter_password">Enter Password</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
 </resources>
