@@ -22,4 +22,8 @@
     <string name="enter_password">Enter Password</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
+    <string name="create_a_new_category">Create a new Category</string>
+    <string name="section_name">Section Name</string>
+    <string name="enter_description">Enter Description</string>
+    <string name="submit">SUBMIT</string>
 </resources>

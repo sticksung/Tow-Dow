@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import com.example.towdow.databinding.HomeFragmentBinding
 import com.example.towdow.databinding.SignupFragmentBinding
 
@@ -31,6 +32,9 @@ class HomeFragment : Fragment() {
         bottomNavigationView.visibility = View.VISIBLE
 
         binding.plusImage.setImageResource(R.drawable.plus)
+        binding.plusImage.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.action_homeFragment_to_forumCreateFragment)
+        }
 //        binding.fab.setImageResource(R.drawable.plus)
       //   binding.homeImage.setImageResource(R.drawable.home)
       //  binding.searchImage.setImageResource(R.drawable.search)

@@ -88,6 +88,9 @@
         <action
             android:id="@+id/action_forumHomeFragment_to_categoryHomeFragment"
             app:destination="@id/categoryHomeFragment" />
+        <action
+            android:id="@+id/action_forumHomeFragment_to_createCategoryFragment"
+            app:destination="@id/createCategoryFragment" />
     </fragment>
     <fragment
         android:id="@+id/categoryHomeFragment"
@@ -116,4 +119,9 @@
         android:name="com.example.towdow.CreatePostFragment"
         android:label="create_post_fragment"
         tools:layout="@layout/create_post_fragment" />
+    <fragment
+        android:id="@+id/createCategoryFragment"
+        android:name="com.example.towdow.CreateCategoryFragment"
+        android:label="create_category_fragment"
+        tools:layout="@layout/create_category_fragment" />
 </navigation>
