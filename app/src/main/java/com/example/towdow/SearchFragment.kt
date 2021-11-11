@@ -14,8 +14,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class SearchFragment : Fragment() {
+
     private var _binding: SearchFragmentBinding? =null
     private val binding get() =_binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

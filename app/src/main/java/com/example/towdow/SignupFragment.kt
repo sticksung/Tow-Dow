@@ -12,6 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class SignupFragment : Fragment() {
+
     private var _binding: SignupFragmentBinding? =null
     private val binding get() =_binding!!
 
