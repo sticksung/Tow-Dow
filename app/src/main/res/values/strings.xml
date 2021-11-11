@@ -19,7 +19,17 @@
         <item>General</item>
         <item>Questions</item>
     </string-array>
+    <string-array name="CategoryCreate">
+        <item>Select a category to a create a forum for</item>
+        <item>Announcements</item>
+        <item>General</item>
+        <item>Questions</item>
+    </string-array>
     <string name="enter_password">Enter Password</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
+    <string name="create_a_new_forum">Create a new forum</string>
+    <string name="forum_name">Forum Name</string>
+    <string name="a_short_description_of_the_forum">A short description of the forum</string>
+    <string name="create_forum">Create Forum</string>
 </resources>
