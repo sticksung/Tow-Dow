@@ -19,6 +19,7 @@
             android:layout_marginTop="36dp"
             android:layout_marginEnd="100dp"
             android:text="@string/create_a_new_forum"
+            android:textColor="@color/purple_700"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +31,7 @@
             android:layout_width="341dp"
             android:layout_height="46dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="44dp"
             android:layout_marginEnd="38dp"
             android:ems="10"
             android:hint="@string/enter_forum_name"
@@ -42,28 +43,55 @@
 
         <Spinner
             android:id="@+id/category1"
-            android:layout_width="357dp"
-            android:layout_height="45dp"
+            android:layout_width="342dp"
+            android:layout_height="64dp"
             android:layout_marginStart="27dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="27dp"
             android:entries="@array/Category"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.466"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/forum_name" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/teal_700"
+            app:layout_constraintBottom_toTopOf="@+id/category1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/teal_700"
+            app:layout_constraintBottom_toTopOf="@+id/description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/description"
             android:layout_width="349dp"
             android:layout_height="92dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="23dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="30dp"
             android:ems="10"
             android:gravity="start|top"
             android:hint="@string/enter_a_description"
             android:inputType="textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/category1" />
 
@@ -77,6 +105,7 @@
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/description" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

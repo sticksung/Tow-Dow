@@ -11,18 +11,10 @@
         android:icon="@drawable/search1"
         android:title="Search" />
 
-    <item
-        android:id="@+id/placeholder"
-        android:title="" />
 
     <item
         android:id="@+id/Profile"
         android:icon="@drawable/profile1"
         android:title="Profile" />
-
-    <item
-        android:id="@+id/Settings"
-        android:icon="@drawable/setting"
-        android:title="Settings" />
 
 </menu>

@@ -12,7 +12,7 @@
     <string name="create_password">Create Password</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="submit">SUBMIT</string>
-    <string name="my_tow_dows">My Tow Dows</string>
+    <string name="my_tow_dows">MY TOW DOWS</string>
     <string-array name="Category">
         <item>Select a category to post to</item>
         <item>Announcements</item>
