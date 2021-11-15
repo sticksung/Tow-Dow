@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +21,7 @@ class CategoryHomeFragment : Fragment() {
 
     private var _binding: CategoryHomeFragmentBinding? =null
     private val binding get() =_binding!!
+    private lateinit var createPosts: ImageView
     private lateinit var database: DatabaseReference
     private lateinit var recyclerView: RecyclerView
     val adapter = TowListAdapter()
@@ -30,25 +32,34 @@ class CategoryHomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = CategoryHomeFragmentBinding.inflate(inflater,container, false)
-        val v = binding.root
+        val view = inflater.inflate(R.layout.category_home_fragment, container, false)
+
+//        _binding = CategoryHomeFragmentBinding.inflate(inflater,container, false)
+//        val v = binding.root
        // database = FirebaseDatabase.getInstance().getReference("0")
+
+        createPosts = view.findViewById(R.id.create_post_image)
+        createPosts.setImageResource(R.drawable.plus)
+        createPosts.setOnClickListener {
+            view?.findNavController()?.navigate(R.id.action_categoryHomeFragment_to_createPostFragment)
+        }
 
       // Adapter stuff
         initArray(myTowDows)
-        recyclerView = binding.forumPostsList
+        recyclerView = view.findViewById(R.id.forum_posts_list)
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         recyclerView.adapter = adapter
+        adapter.setLocations(myTowDows)
 
 
-        return v
+        return view
     }
     private fun initArray(myDataset: MutableList<TowDowData>){
         myDataset.clear()
 
-        myDataset.add(TowDowData("Science", "Science description"))
-        myDataset.add(TowDowData("Math", "Math description"))
-        myDataset.add(TowDowData("History", "History description"))
+        myDataset.add(TowDowData("Post 1", "This is example 1"))
+        myDataset.add(TowDowData("Post 2", "This is example 2"))
+        myDataset.add(TowDowData("Post 3", "This is example 3"))
 
 
     }

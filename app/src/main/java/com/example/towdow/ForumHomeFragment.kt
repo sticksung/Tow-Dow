@@ -4,20 +4,25 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.inflate
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.towdow.databinding.ActivityMainBinding.inflate
+import com.example.towdow.databinding.ForumHomeFragmentBinding
 import com.example.towdow.databinding.HomeFragmentBinding
+import com.example.towdow.databinding.SignupFragmentBinding.inflate
 import java.util.ArrayList
 
 class ForumHomeFragment : Fragment() {
 
-    private var _binding: HomeFragmentBinding? =null
-    private val binding get() =_binding!!
+    private lateinit var binding: ForumHomeFragmentBinding
     private lateinit var recyclerView: RecyclerView
-    val adapter = TowListAdapter()
+    private lateinit var plus: ImageView
+    val adapter = CategoryAdapter()
     val myTowDows = ArrayList<TowDowData>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,18 +31,22 @@ class ForumHomeFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.forum_home_fragment, container, false)
 
+        binding = ForumHomeFragmentBinding.inflate(inflater)
 
-        binding.addCategoryImage.setImageResource(R.drawable.plus);
-        binding.addCategoryImage.setOnClickListener {
+
+        plus = view.findViewById(R.id.add_category_image)
+        plus.setImageResource(R.drawable.plus);
+        plus.setOnClickListener {
             view?.findNavController()?.navigate(R.id.action_forumHomeFragment_to_createCategoryFragment)
         }
 
 
         // Adapter stuff
         initArray(myTowDows)
-        recyclerView = binding.myForumsList
+        recyclerView = view.findViewById(R.id.forum_categories_list)
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         recyclerView.adapter = adapter
+        adapter.setLocations(myTowDows)
 
 
         return view
@@ -52,8 +61,8 @@ class ForumHomeFragment : Fragment() {
 
 
     }
-    inner class TowListAdapter():
-        RecyclerView.Adapter<TowListAdapter.AddressViewHolder>(){
+    inner class CategoryAdapter():
+        RecyclerView.Adapter<CategoryAdapter.AddressViewHolder>(){
         private var locations = emptyList<TowDowData>()
 
         override fun getItemCount(): Int {
@@ -82,7 +91,7 @@ class ForumHomeFragment : Fragment() {
                 //  bundle.putDouble("long", locations[position].long)
                 // Log.d("T05", "In home fragment Lat: ${locations[position].lat} Long: ${locations[position].lat}")
 
-                view?.findNavController()?.navigate(R.id.action_categoryHomeFragment_to_forumPostFragment, bundle)
+                view?.findNavController()?.navigate(R.id.action_forumHomeFragment_to_categoryHomeFragment, bundle)
 
             }
 

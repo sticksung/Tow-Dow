@@ -21,7 +21,7 @@ class HomeFragment : Fragment() {
     private var _binding: HomeFragmentBinding? =null
     private val binding get() =_binding!!
     private lateinit var recyclerView: RecyclerView
-    val adapter = TowListAdapter()
+    val adapter = ForumAdapter()
     val myTowDows = ArrayList<TowDowData>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,6 +49,7 @@ class HomeFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         recyclerView.adapter = adapter
         adapter.setLocations(myTowDows)
+
         return v
     }
 
@@ -60,8 +61,8 @@ class HomeFragment : Fragment() {
         myDataset.add(TowDowData("HIST 3134", "Profressor Hess's history forum!"))
     }
 
-    inner class TowListAdapter():
-        RecyclerView.Adapter<TowListAdapter.AddressViewHolder>(){
+    inner class ForumAdapter():
+        RecyclerView.Adapter<ForumAdapter.AddressViewHolder>(){
         var locations = emptyList<TowDowData>()
 
         override fun getItemCount(): Int {
@@ -88,7 +89,7 @@ class HomeFragment : Fragment() {
                 //  bundle.putDouble("long", locations[position].long)
                 // Log.d("T05", "In home fragment Lat: ${locations[position].lat} Long: ${locations[position].lat}")
 
-                view?.findNavController()?.navigate(R.id.action_categoryHomeFragment_to_forumPostFragment, bundle)
+                view?.findNavController()?.navigate(R.id.action_homeFragment_to_forumHomeFragment, bundle)
 
             }
 
