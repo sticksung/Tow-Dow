@@ -55,6 +55,12 @@
         <action
             android:id="@+id/action_searchFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_categoryHomeFragment"
+            app:destination="@id/categoryHomeFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_forumHomeFragment"
+            app:destination="@id/forumHomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"

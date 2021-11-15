@@ -46,9 +46,11 @@ class HomeFragment : Fragment() {
         Log.d("Debug", myTowDows.toString())
 
         recyclerView = binding.myForumsList
-        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         recyclerView.adapter = adapter
         adapter.setLocations(myTowDows)
+        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+
+
         return v
     }
 
@@ -88,7 +90,7 @@ class HomeFragment : Fragment() {
                 //  bundle.putDouble("long", locations[position].long)
                 // Log.d("T05", "In home fragment Lat: ${locations[position].lat} Long: ${locations[position].lat}")
 
-                view?.findNavController()?.navigate(R.id.action_categoryHomeFragment_to_forumPostFragment, bundle)
+               // view?.findNavController()?.navigate(R.id.action_homeFragment_to_forumHomeFragmentomeFragment_to_forumPostFragment, bundle)
 
             }
 
