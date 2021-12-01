@@ -103,7 +103,7 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
                 //  bundle.putDouble("long", locations[position].long)
                 // Log.d("T05", "In home fragment Lat: ${locations[position].lat} Long: ${locations[position].lat}")
 
-                view?.findNavController()?.navigate(R.id.action_searchFragment_to_categoryHomeFragment, bundle)
+                view?.findNavController()?.navigate(R.id.action_searchFragment_to_forumHomeFragment, bundle)
 
             }
 

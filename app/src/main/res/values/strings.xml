@@ -29,4 +29,6 @@
     <string name="enter_forum_name">Enter forum name</string>
     <string name="enter_a_description">Enter a description</string>
     <string name="create_forum">Create Forum</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="email">Email</string>
 </resources>
