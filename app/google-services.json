@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "199539968455",
+    "project_id": "tow-dow-b9847",
+    "storage_bucket": "tow-dow-b9847.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:199539968455:android:c23ff50ffe78ed6485f1e2",
+        "android_client_info": {
+          "package_name": "com.example.towdow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "199539968455-8281b115if7n4cqe2ki4rpktnop42kie.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIJ7Ig7mQjcvsNc6ZoOn_JN4uwAQeglwc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "199539968455-8281b115if7n4cqe2ki4rpktnop42kie.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
