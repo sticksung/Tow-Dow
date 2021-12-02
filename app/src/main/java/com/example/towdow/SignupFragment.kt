@@ -46,17 +46,18 @@ class SignupFragment : Fragment() {
     }
 
     private fun signUpUser() {
-        if (binding.createUsernameEnter.text.toString().isEmpty()) {
-            binding.createUsernameEnter.error = "Please enter email"
-            binding.createUsernameEnter.requestFocus()
-            return
-        }
 
 //        if (!Patterns.EMAIL_ADDRESS.matcher(binding.createEmailEnter.toString()).matches()) {
 //            binding.createEmailEnter.error = "Please enter valid email"
 //            binding.createEmailEnter.requestFocus()
 //            return
 //        }
+
+        if (binding.createEmailEnter.text.toString().isEmpty()) {
+            binding.createEmailEnter.error = "Please enter email"
+            binding.createEmailEnter.requestFocus()
+            return
+        }
 
         if (binding.createPasswordEnter.text.toString().isEmpty()) {
             binding.createPasswordEnter.error = "Please enter password"
@@ -65,14 +66,21 @@ class SignupFragment : Fragment() {
         }
 
         activity?.let {
-            auth.createUserWithEmailAndPassword(binding.createEmailEnter.toString(), binding.createPasswordEnter.toString())
+            auth.createUserWithEmailAndPassword(binding.createEmailEnter.text.toString(), binding.createPasswordEnter.text.toString())
                 .addOnCompleteListener(it) { task ->
                     if (task.isSuccessful) {
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "createUserWithEmail:success")
                         val user = auth.currentUser
+                        user?.sendEmailVerification()
+                            ?.addOnCompleteListener { task ->
+                                if (task.isSuccessful) {
+                                    view?.findNavController()?.navigate(R.id.action_signupFragment_to_loginFragment)
+                                }
+                            }
                     } else {
-                        Log.d("THIS IS TAG", task.isSuccessful.toString())
+                        Log.d("Email", binding.createEmailEnter.text.toString())
+                        Log.d("THIS IS TAG", task.exception.toString())
                         // If sign in fails, display a message to the user.
                         Toast.makeText(context, "Authentication failed.",
                             Toast.LENGTH_SHORT).show()

@@ -27,52 +27,23 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/create_username_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="92dp"
-            android:layout_marginEnd="283dp"
-            android:text="@string/create_username"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/create_username_enter"
-            android:layout_width="385dp"
-            android:layout_height="56dp"
-            android:layout_marginStart="13dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="13dp"
-            android:ems="10"
-            android:hint="@string/enter_username"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/create_username_text" />
-
-        <TextView
             android:id="@+id/create_email_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="13dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="299dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="61dp"
+            android:layout_marginEnd="324dp"
             android:text="@string/enter_email"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/create_username_enter" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/create_email_enter"
             android:layout_width="385dp"
             android:layout_height="56dp"
             android:layout_marginStart="13dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="13dp"
             android:ems="10"
             android:hint="@string/email"
@@ -88,10 +59,11 @@
             android:layout_width="128dp"
             android:layout_height="31dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="267dp"
-            android:text="@string/confirm_password"
+            android:text="@string/password"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/create_email_enter" />
 
@@ -100,10 +72,10 @@
             android:layout_width="385dp"
             android:layout_height="56dp"
             android:layout_marginStart="13dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="13dp"
             android:ems="10"
-            android:hint="Retype Password"
+            android:hint="@string/create_password2"
             android:inputType="textPassword"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -117,10 +89,11 @@
             android:layout_width="389dp"
             android:layout_height="54dp"
             android:layout_marginStart="11dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="28dp"
             android:layout_marginEnd="11dp"
             android:text="@string/submit"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/create_password_enter" />
     </androidx.constraintlayout.widget.ConstraintLayout>

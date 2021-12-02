@@ -31,4 +31,6 @@
     <string name="create_forum">Create Forum</string>
     <string name="enter_email">Enter Email</string>
     <string name="email">Email</string>
+    <string name="email_txt">Email:</string>
+    <string name="create_password2">Create Password</string>
 </resources>

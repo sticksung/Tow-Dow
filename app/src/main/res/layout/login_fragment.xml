@@ -23,31 +23,33 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/username_text"
+            android:id="@+id/email_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="85dp"
+            android:layout_marginTop="84dp"
             android:layout_marginEnd="337dp"
-            android:text="@string/username"
+            android:text="@string/email_txt"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/username_enter"
+            android:id="@+id/email_enter"
             android:layout_width="339dp"
             android:layout_height="42dp"
             android:layout_marginStart="40dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="40dp"
             android:ems="10"
-            android:hint="@string/enter_username"
+            android:hint="@string/enter_email"
             android:inputType="textPersonName"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/username_text" />
+            app:layout_constraintTop_toBottomOf="@+id/email_text"
+            tools:ignore="TextFields" />
 
         <TextView
             android:id="@+id/password_text"
@@ -59,7 +61,7 @@
             android:text="@string/password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/username_enter" />
+            app:layout_constraintTop_toBottomOf="@+id/email_enter" />
 
         <EditText
             android:id="@+id/password_enter"
