@@ -33,4 +33,8 @@
     <string name="email">Email</string>
     <string name="email_txt">Email:</string>
     <string name="create_password2">Create Password</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="profile">Profile</string>
 </resources>

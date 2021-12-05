@@ -31,6 +31,8 @@ class LoginFragment : Fragment() {
         val bottomNavigationView: BottomNavigationView = requireActivity().findViewById(com.example.towdow.R.id.bottomNavigationView)
         bottomNavigationView.visibility = View.GONE
 
+        auth = Firebase.auth
+
         binding.towDowImage.setImageResource(R.drawable.logo)
         binding.signinButton.setOnClickListener{
             doLogin()
@@ -39,7 +41,7 @@ class LoginFragment : Fragment() {
         binding.signupButton.setOnClickListener{
             view?.findNavController()?.navigate(R.id.action_loginFragment_to_signupFragment)
         }
-        auth = Firebase.auth
+
 
         return v
     }
@@ -87,6 +89,7 @@ class LoginFragment : Fragment() {
     private fun updateUI(currentUser: FirebaseUser?) {
         if (currentUser != null) {
             if (currentUser.isEmailVerified) {
+                Log.d("Is Verified", currentUser.isEmailVerified.toString())
                 view?.findNavController()?.navigate(R.id.action_loginFragment_to_homeFragment)
             }
         }

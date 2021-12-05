@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.towdow.databinding.HomeFragmentBinding
 
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import java.util.ArrayList
 
 
@@ -37,9 +39,13 @@ class HomeFragment : Fragment() {
 
         binding.addCategoryImage.setImageResource(R.drawable.plus)
         binding.addCategoryImage.setOnClickListener {
-            v?.findNavController()?.navigate(R.id.action_homeFragment_to_forumCreateFragment)
+            v.findNavController().navigate(R.id.action_homeFragment_to_forumCreateFragment)
         }
 
+        binding.signoutButton.setOnClickListener {
+            Firebase.auth.signOut()
+            v.findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
+        }
 
         // Adapter stuff
         initArray(myTowDows)

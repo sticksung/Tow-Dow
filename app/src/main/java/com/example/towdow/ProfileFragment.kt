@@ -8,6 +8,11 @@ import android.view.ViewGroup
 import com.example.towdow.databinding.CardViewTowdowBinding.inflate
 import com.example.towdow.databinding.HomeFragmentBinding
 import com.example.towdow.databinding.ProfileFragmentBinding
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+
 
 class ProfileFragment : Fragment() {
 
@@ -21,6 +26,11 @@ class ProfileFragment : Fragment() {
 
         _binding = ProfileFragmentBinding.inflate(inflater,container, false)
         val v = binding.root
+
+        val user = Firebase.auth.currentUser
+        if (user != null) {
+            binding.tvName.text = user.email
+        }
 
 
        // binding.myUsernameText.text = "John Doe"

@@ -41,30 +41,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/create_forum_text" />
 
-        <Spinner
-            android:id="@+id/category1"
-            android:layout_width="342dp"
-            android:layout_height="64dp"
-            android:layout_marginStart="27dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="27dp"
-            android:entries="@array/Category"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.466"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/forum_name" />
-
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:layout_centerVertical="true"
             android:layout_margin="10dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="14dp"
             android:background="@color/teal_700"
-            app:layout_constraintBottom_toTopOf="@+id/category1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.526"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/forum_name" />
 
         <View
             android:id="@+id/view"
@@ -84,22 +71,22 @@
             android:layout_width="349dp"
             android:layout_height="92dp"
             android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="56dp"
             android:layout_marginEnd="30dp"
             android:ems="10"
             android:gravity="start|top"
             android:hint="@string/enter_a_description"
             android:inputType="textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/category1" />
+            app:layout_constraintTop_toBottomOf="@+id/forum_name" />
 
         <Button
             android:id="@+id/create_forum"
             android:layout_width="286dp"
             android:layout_height="48dp"
-            android:layout_marginTop="76dp"
+            android:layout_marginTop="56dp"
             android:text="@string/create_forum"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
