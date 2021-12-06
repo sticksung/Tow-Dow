@@ -61,6 +61,6 @@ class ForumCreateFragment : Fragment() {
     private fun writeNewForum(name: String, description: String) {
         val forum = Forum(name, description)
 
-        database.child(name).setValue(forum)
+        database.child("Forums").child(name).setValue(forum)
     }
 }
