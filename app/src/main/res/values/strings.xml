@@ -37,4 +37,8 @@
     <string name="home">Home</string>
     <string name="search">Search</string>
     <string name="profile">Profile</string>
+    <string name="reply">REPLY</string>
+    <string name="write_your_reply">Write your Reply!</string>
+    <string name="write_your_reply_here">Write your reply here</string>
+    <string name="finish">Finish</string>
 </resources>
