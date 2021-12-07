@@ -82,6 +82,7 @@ class HomeFragment : Fragment() {
 
                     if (user != null) {
                         if (forum.users.contains(user.uid)) {
+                            println("Type of snapshot in Forums" + i.toString())
                             myTowDows.add(TowDowData(forum.name!!, forum.description!!))
                         }
                     }

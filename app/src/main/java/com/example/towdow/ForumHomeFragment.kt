@@ -46,62 +46,130 @@ class ForumHomeFragment : Fragment() {
 
         //binding = ForumHomeFragmentBinding.inflate(inflater)
 
-        database = Firebase.database.reference
+//        database = Firebase.database.reference
+//
+//        plus = view.findViewById(R.id.add_category_image)
+//        plus.setImageResource(R.drawable.plus);
+//        plus.setOnClickListener {
+//            val bundle = Bundle()
+//            bundle.putString("name", forumName)
+//            view?.findNavController()?.navigate(R.id.action_forumHomeFragment_to_createCategoryFragment)
+//        }
 
-        plus = view.findViewById(R.id.add_category_image)
-        plus.setImageResource(R.drawable.plus);
-        plus.setOnClickListener {
-            view?.findNavController()?.navigate(R.id.action_forumHomeFragment_to_createCategoryFragment)
-        }
-
-        view.findViewById<Button>(R.id.delete_forum_button).setOnClickListener {
-            database.child("Forums").addListenerForSingleValueEvent(object: ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    for (i in snapshot.children) {
-                        val forum: Forum = i.getValue(Forum::class.java)!!
-
-                        if (user != null) {
-                            if (forum.users.contains(user.uid)) {
-                                if (forum.name == forumName) {
-                                    forum.users.remove(user.uid)
-                                    println("Removed?" +  forum.users.remove(user.uid))
-                                    view?.findNavController()?.navigate(R.id.action_forumHomeFragment_to_homeFragment)
-                                }
-                            }
-                        }
-                    }
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
-                }
-
-            })
-        }
+//        view.findViewById<TextView>(R.id.forum_title_text).text = forumName
+//
+//        view.findViewById<Button>(R.id.delete_forum_button).setOnClickListener {
+//            database.child("Forums").addListenerForSingleValueEvent(object: ValueEventListener {
+//                override fun onDataChange(snapshot: DataSnapshot) {
+//                    for (i in snapshot.children) {
+//                        val forum: Forum = i.getValue(Forum::class.java)!!
+//
+//                        if (user != null) {
+//                            if (forum.users.contains(user.uid)) {
+//                                if (forum.name == forumName) {
+//                                    forum.users.remove(user.uid)
+//                                    println("Removed?" +  forum.users.remove(user.uid))
+//                                    view?.findNavController()?.navigate(R.id.action_forumHomeFragment_to_homeFragment)
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//
+//                override fun onCancelled(error: DatabaseError) {
+//                    TODO("Not yet implemented")
+//                }
+//
+//            })
+//        }
 
       //  binding.forumTitleText.text = "Science"
 
         // Adapter stuff
-        initArray(myTowDows)
-        recyclerView = view.findViewById(R.id.forum_categories_list)
-        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        recyclerView.adapter = adapter
-        adapter.setLocations(myTowDows)
+//        initArray(myTowDows)
+//        recyclerView = view.findViewById(R.id.forum_categories_list)
+//        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+//        recyclerView.adapter = adapter
+//        adapter.setLocations(myTowDows)
 
 
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         forumName = this.arguments?.getString("name").toString()
+
+        database = Firebase.database.reference
+
+        plus = view.findViewById(R.id.add_category_image)
+        plus.setImageResource(R.drawable.plus);
+        plus.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("name", forumName)
+            view.findNavController().navigate(R.id.action_forumHomeFragment_to_createCategoryFragment, bundle)
+        }
+
+        view.findViewById<TextView>(R.id.forum_title_text).text = forumName
+
+//        view.findViewById<Button>(R.id.delete_forum_button).setOnClickListener {
+//            database.child("Forums").addListenerForSingleValueEvent(object: ValueEventListener {
+//                override fun onDataChange(snapshot: DataSnapshot) {
+//                    for (i in snapshot.children) {
+//                        val forum: Forum = i.getValue(Forum::class.java)!!
+//
+//                        if (user != null) {
+//                            if (forum.users.contains(user.uid)) {
+//                                if (forum.name == forumName) {
+//                                    forum.users.remove(user.uid)
+//                                    println("Removed?" +  forum.users.remove(user.uid))
+//                                    view.findNavController().navigate(R.id.action_forumHomeFragment_to_homeFragment)
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//
+//                override fun onCancelled(error: DatabaseError) {
+//                    TODO("Not yet implemented")
+//                }
+//
+//            })
+//        }
+
+        initArray(myTowDows)
+        recyclerView = view.findViewById(R.id.forum_categories_list)
+        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        recyclerView.adapter = adapter
+        adapter.setLocations(myTowDows)
+
+        database.child("Forums").child(forumName).child("Categories").addListenerForSingleValueEvent(object:ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (i in snapshot.children) {
+                    println("Type of snapshot in Categories" + i.toString())
+                    val category: Category? = i.getValue(Category::class.java)
+                    myTowDows.add(TowDowData(category?.name!!, category.description!!))
+                }
+
+//                recyclerView = binding.myForumsList
+//                recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+                recyclerView.adapter = adapter
+                adapter.setLocations(myTowDows)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
 
     private fun initArray(myDataset: MutableList<TowDowData>){
         myDataset.clear()
 
-        myDataset.add(TowDowData("Science", "Science description"))
-        myDataset.add(TowDowData("Math", "Math description"))
-        myDataset.add(TowDowData("History", "History description"))
+//        myDataset.add(TowDowData("Science", "Science description"))
+//        myDataset.add(TowDowData("Math", "Math description"))
+//        myDataset.add(TowDowData("History", "History description"))
 
 
     }

@@ -153,7 +153,14 @@
         android:id="@+id/createCategoryFragment"
         android:name="com.example.towdow.CreateCategoryFragment"
         android:label="create_category_fragment"
-        tools:layout="@layout/create_category_fragment" />
+        tools:layout="@layout/create_category_fragment" >
+        <action
+            android:id="@+id/action_createCategoryFragment_to_categoryHomeFragment"
+            app:destination="@id/categoryHomeFragment" />
+        <action
+            android:id="@+id/action_createCategoryFragment_to_forumHomeFragment"
+            app:destination="@id/forumHomeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/replyFragment"
         android:name="com.example.towdow.ReplyFragment"
