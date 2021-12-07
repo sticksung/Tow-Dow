@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.inflate
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
@@ -15,13 +16,25 @@ import com.example.towdow.databinding.ActivityMainBinding.inflate
 import com.example.towdow.databinding.ForumHomeFragmentBinding
 import com.example.towdow.databinding.HomeFragmentBinding
 import com.example.towdow.databinding.SignupFragmentBinding.inflate
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import java.util.ArrayList
 
 class ForumHomeFragment : Fragment() {
 
-    private lateinit var binding: ForumHomeFragmentBinding
+    //private lateinit var binding: ForumHomeFragmentBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var plus: ImageView
+    private lateinit var forumName: String
+
+    private lateinit var database: DatabaseReference
+    private val user = Firebase.auth.currentUser
+
     val adapter = CategoryAdapter()
     val myTowDows = ArrayList<TowDowData>()
     override fun onCreateView(
@@ -31,13 +44,39 @@ class ForumHomeFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.forum_home_fragment, container, false)
 
-        binding = ForumHomeFragmentBinding.inflate(inflater)
+        //binding = ForumHomeFragmentBinding.inflate(inflater)
 
+        database = Firebase.database.reference
 
         plus = view.findViewById(R.id.add_category_image)
         plus.setImageResource(R.drawable.plus);
         plus.setOnClickListener {
             view?.findNavController()?.navigate(R.id.action_forumHomeFragment_to_createCategoryFragment)
+        }
+
+        view.findViewById<Button>(R.id.delete_forum_button).setOnClickListener {
+            database.child("Forums").addListenerForSingleValueEvent(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (i in snapshot.children) {
+                        val forum: Forum = i.getValue(Forum::class.java)!!
+
+                        if (user != null) {
+                            if (forum.users.contains(user.uid)) {
+                                if (forum.name == forumName) {
+                                    forum.users.remove(user.uid)
+                                    println("Removed?" +  forum.users.remove(user.uid))
+                                    view?.findNavController()?.navigate(R.id.action_forumHomeFragment_to_homeFragment)
+                                }
+                            }
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+
+            })
         }
 
       //  binding.forumTitleText.text = "Science"
@@ -51,6 +90,10 @@ class ForumHomeFragment : Fragment() {
 
 
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        forumName = this.arguments?.getString("name").toString()
     }
 
     private fun initArray(myDataset: MutableList<TowDowData>){
