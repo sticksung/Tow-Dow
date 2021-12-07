@@ -73,20 +73,7 @@ class HomeFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
 
                 for (i in snapshot.children) {
-//                    println("Test adsdasd " + i.value.("name"))
-//                    val gson = Gson()
-//                    val temp = gson.toJson(i.value)
-//
-//                    println("TEMP asdasd " + temp)
-
                     val forum: Forum = i.getValue(Forum::class.java)!!
-
-//                    println("Init" + i.value.toString())
-//                    var str = i.value.toString()
-//                    str = str.substringAfter("name=")
-//                    val name = str.substringBefore(",")
-//                    str = str.substringAfter(", description=")
-//                    val description = str.substringBefore("}")
 
                     if (user != null) {
                         if (forum.users.contains(user.uid.toString())) {
