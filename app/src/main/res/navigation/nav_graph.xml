@@ -123,7 +123,11 @@
         android:id="@+id/forumPostFragment"
         android:name="com.example.towdow.ForumPostFragment"
         android:label="forum_post_fragment"
-        tools:layout="@layout/forum_post_fragment" />
+        tools:layout="@layout/forum_post_fragment" >
+        <action
+            android:id="@+id/action_forumPostFragment_to_replyFragment"
+            app:destination="@id/replyFragment" />
+    </fragment>
     <fragment
         android:id="@+id/forumCreateFragment"
         android:name="com.example.towdow.ForumCreateFragment"
@@ -137,10 +141,23 @@
         android:id="@+id/createPostFragment"
         android:name="com.example.towdow.CreatePostFragment"
         android:label="create_post_fragment"
-        tools:layout="@layout/create_post_fragment" />
+        tools:layout="@layout/create_post_fragment" >
+        <action
+            android:id="@+id/action_createPostFragment_self"
+            app:destination="@id/createPostFragment" />
+    </fragment>
     <fragment
         android:id="@+id/createCategoryFragment"
         android:name="com.example.towdow.CreateCategoryFragment"
         android:label="create_category_fragment"
         tools:layout="@layout/create_category_fragment" />
+    <fragment
+        android:id="@+id/replyFragment"
+        android:name="com.example.towdow.ReplyFragment"
+        android:label="reply_fragment"
+        tools:layout="@layout/reply_fragment" >
+        <action
+            android:id="@+id/action_replyFragment_to_forumPostFragment"
+            app:destination="@id/forumPostFragment" />
+    </fragment>
 </navigation>
