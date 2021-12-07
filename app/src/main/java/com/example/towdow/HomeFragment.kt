@@ -120,6 +120,7 @@ class HomeFragment : Fragment() {
 
             holder.itemView.setOnClickListener(){
                 val bundle = Bundle()
+                bundle.putString("name", locations[position].forum_name)
                 // bundle.putDouble("lat", locations[position].lat)
                 //  bundle.putDouble("long", locations[position].long)
                 // Log.d("T05", "In home fragment Lat: ${locations[position].lat} Long: ${locations[position].lat}")
