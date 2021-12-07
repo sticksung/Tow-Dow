@@ -35,7 +35,7 @@ class ProfileFragment : Fragment() {
 
         binding.signoutButton2.setOnClickListener {
             Firebase.auth.signOut()
-            v.findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
+            v.findNavController().navigate(R.id.action_profileFragment_to_loginFragment)
         }
 
         binding.homeHomeButton4.setOnClickListener{
