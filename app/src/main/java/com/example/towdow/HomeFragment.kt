@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -46,7 +48,7 @@ class HomeFragment : Fragment() {
      //   (activity as MainActivity)..menu.getItem(1).isChecked = true
         _binding = HomeFragmentBinding.inflate(inflater,container, false)
         val v = binding.root
-
+        val model: MyViewModel by viewModels()
         database = Firebase.database.reference
 
       //  val bottomNavigationView: BottomNavigationView = requireActivity().findViewById(com.example.towdow.R.id.bottomNavigationView)
@@ -69,37 +71,36 @@ class HomeFragment : Fragment() {
         // Adapter stuff
         initArray(myTowDows)
         Log.d("Debug", myTowDows.toString())
+        recyclerView = binding.myForumsList
+        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        recyclerView.adapter = adapter
 
-        database.child("Forums").addListenerForSingleValueEvent(object:ValueEventListener{
+        model.forums.observe(
+            this,
+            Observer<List<TowDowData>>{ tows ->
+                tows?.let{
+                    adapter.setLocations(it)
+                    Log.d("T05", it.toString())
+                }
+            }
+        )
+
+        database.child("Forums").addValueEventListener(object:ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-
+                model.forumItems?.clear()
                 for (i in snapshot.children) {
-//                    println("Test adsdasd " + i.value.("name"))
-//                    val gson = Gson()
-//                    val temp = gson.toJson(i.value)
-//
-//                    println("TEMP asdasd " + temp)
 
                     val forum: Forum = i.getValue(Forum::class.java)!!
 
-//                    println("Init" + i.value.toString())
-//                    var str = i.value.toString()
-//                    str = str.substringAfter("name=")
-//                    val name = str.substringBefore(",")
-//                    str = str.substringAfter(", description=")
-//                    val description = str.substringBefore("}")
-
                     if (user != null) {
                         if (forum.users.contains(user.uid.toString())) {
-                            myTowDows.add(TowDowData(forum.name!!, forum.description!!))
+                            model.forumItems?.add(TowDowData(forum.name!!, forum.description!!))
+                            model.forums.postValue(model.forumItems)
                         }
                     }
                 }
-
-                recyclerView = binding.myForumsList
-                recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-                recyclerView.adapter = adapter
-                adapter.setLocations(myTowDows)
+             //   adapter.setLocations(model.forums)
+                adapter.notifyDataSetChanged()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -127,11 +128,11 @@ class HomeFragment : Fragment() {
                 // code remove swiped item
                 //notify the recyclerview changes
                 //Log.d("T05")
-                var current = model.locationItems?.get(position)
-                var currentLocationReferene = model.database.child(current!!.date)
+                var current = model.forumItems?.get(position)
+                var currentLocationReferene = database.child("Forums").child(current!!.forum_name)
                 Log.d("T05", currentLocationReferene.toString())
                 currentLocationReferene.removeValue()
-                //model.locations.postValue(model.locationItems)
+                //model.forums.postValue(model.locationItems)
                 //database.removeValue(current)
                 adapter.notifyDataSetChanged()
 
@@ -139,7 +140,7 @@ class HomeFragment : Fragment() {
         }
 
         val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
-        itemTouchHelper.attachToRecyclerView(recyclerView)
+        itemTouchHelper.attachToRecyclerView(binding.myForumsList)
 
 
 
