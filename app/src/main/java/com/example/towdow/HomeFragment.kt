@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -46,13 +48,8 @@ class HomeFragment : Fragment() {
      //   (activity as MainActivity)..menu.getItem(1).isChecked = true
         _binding = HomeFragmentBinding.inflate(inflater,container, false)
         val v = binding.root
-
+        val model: MyViewModel by viewModels()
         database = Firebase.database.reference
-
-        recyclerView = binding.myForumsList
-        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        recyclerView.adapter = adapter
-        adapter.setLocations(myTowDows)
 
       //  val bottomNavigationView: BottomNavigationView = requireActivity().findViewById(com.example.towdow.R.id.bottomNavigationView)
        // bottomNavigationView.visibility = View.VISIBLE
@@ -74,24 +71,37 @@ class HomeFragment : Fragment() {
         // Adapter stuff
         initArray(myTowDows)
         Log.d("Debug", myTowDows.toString())
+        recyclerView = binding.myForumsList
+        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        recyclerView.adapter = adapter
 
-        database.child("Forums").addListenerForSingleValueEvent(object:ValueEventListener{
+        model.forums.observe(
+            this,
+            Observer<List<TowDowData>>{ tows ->
+                tows?.let{
+                    adapter.setLocations(it)
+                    Log.d("T05", it.toString())
+                }
+            }
+        )
+
+        database.child("Forums").addValueEventListener(object:ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
+                model.forumItems?.clear()
+
                 for (i in snapshot.children) {
+
                     val forum: Forum = i.getValue(Forum::class.java)!!
 
                     if (user != null) {
-                        if (forum.users.contains(user.uid)) {
-                            println("Type of snapshot in Forums" + i.toString())
-                            myTowDows.add(TowDowData(forum.name!!, forum.description!!))
+                        if (forum.users.contains(user.uid.toString())) {
+                            model.forumItems?.add(TowDowData(forum.name!!, forum.description!!))
+                            model.forums.postValue(model.forumItems)
                         }
                     }
                 }
-
-//                recyclerView = binding.myForumsList
-//                recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-                recyclerView.adapter = adapter
-                adapter.setLocations(myTowDows)
+             //   adapter.setLocations(model.forums)
+                adapter.notifyDataSetChanged()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -100,59 +110,40 @@ class HomeFragment : Fragment() {
 
         })
 
+        val simpleItemTouchCallback: ItemTouchHelper.SimpleCallback = object :
+            ItemTouchHelper.SimpleCallback(
+                0,
+                ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT or ItemTouchHelper.DOWN or ItemTouchHelper.UP
+            ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                //do something
+                return false
+            }
 
-//        val simpleItemTouchCallback: ItemTouchHelper.SimpleCallback = object :
-//            ItemTouchHelper.SimpleCallback(
-//                0,
-//                ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT or ItemTouchHelper.DOWN or ItemTouchHelper.UP
-//            ) {
-//            override fun onMove(
-//                recyclerView: RecyclerView,
-//                viewHolder: RecyclerView.ViewHolder,
-//                target: RecyclerView.ViewHolder
-//            ): Boolean {
-//                //do something
-//                return false
-//            }
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, swipeDir: Int) {
+                val position = viewHolder.adapterPosition
+                // code remove swiped item
+                //notify the recyclerview changes
+                //Log.d("T05")
+                var current = model.forumItems?.get(position)
+                var currentLocationReferene = database.child("Forums").child(current!!.forum_name)
+                Log.d("T05", currentLocationReferene.toString())
+                currentLocationReferene.removeValue()
+                //model.forums.postValue(model.locationItems)
+                //database.removeValue(current)
+                adapter.notifyDataSetChanged()
 
-//            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, swipeDir: Int) {
-//                val position = viewHolder.adapterPosition
-//
-//                val current = myTowDows.get(position)
-//                myTowDows.remove(current)
-//
-//                database.child("Forums").addListenerForSingleValueEvent(object:ValueEventListener{
-//                    override fun onDataChange(snapshot: DataSnapshot) {
-//                        for (i in snapshot.children) {
-//                            val forum: Forum = i.getValue(Forum::class.java)!!
-//
-//                            if (user != null) {
-//                                if (forum.users.contains(user.uid)) {
-//                                    if (current.forum_name == forum.name) {
-//                                        forum.users.remove(user.uid)
-//                                    }
-//                                }
-//                            }
-//                        }
-//
-//                        recyclerView = binding.myForumsList
-//                        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-//                        recyclerView.adapter = adapter
-//                        adapter.setLocations(myTowDows)
-//                    }
-//
-//                    override fun onCancelled(error: DatabaseError) {
-//                        TODO("Not yet implemented")
-//                    }
-//
-//                })
-//                adapter.notifyDataSetChanged()
-//
-//            }
-//        }
-//
-//        val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
-//        itemTouchHelper.attachToRecyclerView(recyclerView)
+            }
+        }
+
+        val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
+        itemTouchHelper.attachToRecyclerView(binding.myForumsList)
+
+
 
         return v
     }
@@ -181,6 +172,16 @@ class HomeFragment : Fragment() {
             val v = LayoutInflater.from(parent.context)
                 .inflate(R.layout.card_view_towdow, parent, false)
             return AddressViewHolder(v)
+        }
+
+        fun isUser(): Boolean {
+            for (i in users) {
+                if (user != null) {
+                    if (user.email == i)
+                        return true
+                }
+            }
+            return false
         }
 
         override fun onBindViewHolder(holder: AddressViewHolder, position: Int) {
