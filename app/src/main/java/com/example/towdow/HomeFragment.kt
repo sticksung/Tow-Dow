@@ -88,6 +88,7 @@ class HomeFragment : Fragment() {
         database.child("Forums").addValueEventListener(object:ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 model.forumItems?.clear()
+
                 for (i in snapshot.children) {
 
                     val forum: Forum = i.getValue(Forum::class.java)!!

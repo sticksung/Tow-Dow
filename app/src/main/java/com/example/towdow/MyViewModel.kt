@@ -13,5 +13,6 @@ class MyViewModel: ViewModel() {
         forums.value = forumItems
         forumItems = java.util.ArrayList<TowDowData>()
 
+
     }
 }
