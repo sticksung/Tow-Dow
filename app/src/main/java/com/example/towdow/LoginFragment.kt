@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.example.towdow.databinding.LoginFragmentBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -20,6 +21,8 @@ class LoginFragment : Fragment() {
     private var _binding: LoginFragmentBinding? =null
     private val binding get() =_binding!!
     private lateinit var auth: FirebaseAuth
+
+    private val model: ForumsViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -89,6 +92,8 @@ class LoginFragment : Fragment() {
     private fun updateUI(currentUser: FirebaseUser?) {
         if (currentUser != null) {
             if (currentUser.isEmailVerified) {
+//                println("USER UID " + currentUser.uid)
+                model.setUserUID(currentUser.uid)
                 Log.d("Is Verified", currentUser.isEmailVerified.toString())
                 view?.findNavController()?.navigate(R.id.action_loginFragment_to_homeFragment)
             }

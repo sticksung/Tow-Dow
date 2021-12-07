@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.example.towdow.databinding.ForumCreateFragmentBinding
 import com.google.firebase.database.DatabaseReference
@@ -22,6 +23,8 @@ class ForumCreateFragment : Fragment() {
     //private var _binding: ForumCreateFragmentBinding? =null
     //private val binding get() =_binding!!
     private lateinit var database: DatabaseReference
+
+    private val model: ForumsViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,14 +55,16 @@ class ForumCreateFragment : Fragment() {
         return view
     }
 
-    @IgnoreExtraProperties
-    data class Forum(val name: String? = null, val description: String? = null) {
-        // Null default values create a no-argument default constructor, which is needed
-        // for deserialization from a DataSnapshot.
-    }
+//    @IgnoreExtraProperties
+//    data class Forum(val name: String? = null, val description: String? = null, val users: ArrayList<String>) {
+//        // Null default values create a no-argument default constructor, which is needed
+//        // for deserialization from a DataSnapshot.
+//    }
 
     private fun writeNewForum(name: String, description: String) {
-        val forum = Forum(name, description)
+        var users = ArrayList<String>()
+        users.add(model.currentUserUID)
+        val forum = Forum(name, description, users)
 
         database.child("Forums").child(name).setValue(forum)
     }

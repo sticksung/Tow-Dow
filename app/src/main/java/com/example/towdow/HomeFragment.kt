@@ -2,9 +2,10 @@ package com.example.towdow
 
 import android.os.Bundle
 import android.util.Log
-import android.view.*
-import android.widget.SearchView
 import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,6 +21,9 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import com.google.gson.Gson
+import org.json.JSONArray
+import java.text.Normalizer
 import java.util.ArrayList
 
 
@@ -31,6 +35,8 @@ class HomeFragment : Fragment() {
     val adapter = ForumAdapter()
     val myTowDows = ArrayList<TowDowData>()
     private lateinit var database: DatabaseReference
+    private val user = Firebase.auth.currentUser
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -65,16 +71,28 @@ class HomeFragment : Fragment() {
 
         database.child("Forums").addListenerForSingleValueEvent(object:ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
-                for (i in snapshot.children) {
-                    println("Init" + i.value.toString())
-                    var str = i.value.toString()
-                    str = str.substringAfter("name=")
-                    val name = str.substringBefore(",")
-                    str = str.substringAfter(", description=")
-                    val description = str.substringBefore("}")
 
-                    myTowDows.add(TowDowData(name, description))
-                    println(myTowDows.toString())
+                for (i in snapshot.children) {
+//                    println("Test adsdasd " + i.value.("name"))
+//                    val gson = Gson()
+//                    val temp = gson.toJson(i.value)
+//
+//                    println("TEMP asdasd " + temp)
+
+                    val forum: Forum = i.getValue(Forum::class.java)!!
+
+//                    println("Init" + i.value.toString())
+//                    var str = i.value.toString()
+//                    str = str.substringAfter("name=")
+//                    val name = str.substringBefore(",")
+//                    str = str.substringAfter(", description=")
+//                    val description = str.substringBefore("}")
+
+                    if (user != null) {
+                        if (forum.users.contains(user.uid.toString())) {
+                            myTowDows.add(TowDowData(forum.name!!, forum.description!!))
+                        }
+                    }
                 }
 
                 recyclerView = binding.myForumsList
@@ -102,6 +120,9 @@ class HomeFragment : Fragment() {
     inner class ForumAdapter():
         RecyclerView.Adapter<ForumAdapter.AddressViewHolder>(){
         var locations = emptyList<TowDowData>()
+        var users = ArrayList<String>()
+        val forums = ArrayList<ArrayList<String>>()
+       // var currentForum = String?
 
         override fun getItemCount(): Int {
             return locations.size
@@ -116,6 +137,17 @@ class HomeFragment : Fragment() {
                 .inflate(R.layout.card_view_towdow, parent, false)
             return AddressViewHolder(v)
         }
+
+        fun isUser(): Boolean {
+            for (i in users) {
+                if (user != null) {
+                    if (user.email == i)
+                        return true
+                }
+            }
+            return false
+        }
+
         override fun onBindViewHolder(holder: AddressViewHolder, position: Int) {
 
             holder.view.findViewById<TextView>(R.id.towdow_name).text=locations[position].forum_name
@@ -123,6 +155,7 @@ class HomeFragment : Fragment() {
 
             holder.itemView.setOnClickListener(){
                 val bundle = Bundle()
+                bundle.putString("name", locations[position].forum_name)
                 // bundle.putDouble("lat", locations[position].lat)
                 //  bundle.putDouble("long", locations[position].long)
                 // Log.d("T05", "In home fragment Lat: ${locations[position].lat} Long: ${locations[position].lat}")
