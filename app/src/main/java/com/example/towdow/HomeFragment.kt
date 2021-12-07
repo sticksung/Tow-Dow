@@ -14,6 +14,12 @@ import com.example.towdow.databinding.HomeFragmentBinding
 
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 import java.util.ArrayList
 
@@ -25,6 +31,8 @@ class HomeFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     val adapter = ForumAdapter()
     val myTowDows = ArrayList<TowDowData>()
+    private lateinit var database: DatabaseReference
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,6 +41,7 @@ class HomeFragment : Fragment() {
         _binding = HomeFragmentBinding.inflate(inflater,container, false)
         val v = binding.root
 
+        database = Firebase.database.reference
 
         val bottomNavigationView: BottomNavigationView = requireActivity().findViewById(com.example.towdow.R.id.bottomNavigationView)
         bottomNavigationView.visibility = View.VISIBLE
@@ -51,10 +60,33 @@ class HomeFragment : Fragment() {
         initArray(myTowDows)
         Log.d("Debug", myTowDows.toString())
 
-        recyclerView = binding.myForumsList
-        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        recyclerView.adapter = adapter
-        adapter.setLocations(myTowDows)
+        database.child("Forums").addListenerForSingleValueEvent(object:ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (i in snapshot.children) {
+                    println("Init" + i.value.toString())
+                    var str = i.value.toString()
+                    str = str.substringAfter("name=")
+                    val name = str.substringBefore(",")
+                    str = str.substringAfter(", description=")
+                    val description = str.substringBefore("}")
+
+                    myTowDows.add(TowDowData(name, description))
+                    println(myTowDows.toString())
+                }
+
+                recyclerView = binding.myForumsList
+                recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+                recyclerView.adapter = adapter
+                adapter.setLocations(myTowDows)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
+
 
         return v
     }
@@ -62,9 +94,6 @@ class HomeFragment : Fragment() {
     private fun initArray(myDataset: MutableList<TowDowData>){
         myDataset.clear()
 
-        myDataset.add(TowDowData("BIO 1004", "This forum is for Dr. T's Biological Science Class."))
-        myDataset.add(TowDowData("MATH 2114", "Linear Algebra at Virginia Tech."))
-        myDataset.add(TowDowData("HIST 3134", "Profressor Hess's history forum!"))
     }
 
     inner class ForumAdapter():
