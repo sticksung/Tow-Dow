@@ -2,10 +2,9 @@ package com.example.towdow
 
 import android.os.Bundle
 import android.util.Log
+import android.view.*
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,7 +31,6 @@ class HomeFragment : Fragment() {
     val adapter = ForumAdapter()
     val myTowDows = ArrayList<TowDowData>()
     private lateinit var database: DatabaseReference
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
