@@ -12,9 +12,8 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.Navigation
 
 import androidx.navigation.NavController
-
-
-
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 
 
 val bottomNavigationView: BottomNavigationView? = null
@@ -24,24 +23,26 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val fragmentManager: FragmentManager = supportFragmentManager
 
-        // define your fragments here
-        val fragment1: Fragment = HomeFragment()
-        val fragment2: Fragment = SearchFragment()
-        val fragment3: Fragment = ProfileFragment()
-
-        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
-
-        // handle navigation selection
-        bottomNavigationView.setOnItemSelectedListener { item ->
-            lateinit var fragment: Fragment
-            when (item.itemId) {
-                R.id.home -> fragment = fragment1
-                R.id.Search -> fragment = fragment2
-                R.id.Profile -> fragment = fragment3
-            }
-            fragmentManager.beginTransaction().replace(R.id.fragmentContainerView, fragment).commit()
-            true
-        }
+//        // define your fragments here
+//        val fragment1: Fragment = HomeFragment()
+//        val fragment2: Fragment = SearchFragment()
+//        val fragment3: Fragment = ProfileFragment()
+//
+//      //  val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationView)
+//
+//        // handle navigation selection
+//        bottomNavigationView.setOnItemSelectedListener { item ->
+//            lateinit var fragment: Fragment
+//            when (item.itemId) {
+//                R.id.home -> fragment = fragment1
+//                R.id.Search -> fragment = fragment2
+//                R.id.Profile -> fragment = fragment3
+//            }
+////          //  val navController = navHostFragment.navController
+//            fragmentManager.beginTransaction().replace(R.id.fragmentContainerView, fragment).addToBackStack(fragment.tag).commit()
+//          //  navController.navigate(R.id.action_homeFragment_to_searchFragment)
+//            true
+//        }
 
         // Set default selection
      //   bottomNavigationView.selectedItemId = R.id.Home

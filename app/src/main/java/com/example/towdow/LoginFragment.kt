@@ -28,8 +28,8 @@ class LoginFragment : Fragment() {
         _binding = LoginFragmentBinding.inflate(inflater,container, false)
         val v = binding.root
 
-        val bottomNavigationView: BottomNavigationView = requireActivity().findViewById(com.example.towdow.R.id.bottomNavigationView)
-        bottomNavigationView.visibility = View.GONE
+     //   val bottomNavigationView: BottomNavigationView = requireActivity().findViewById(com.example.towdow.R.id.bottomNavigationView)
+    //    bottomNavigationView.visibility = View.GONE
 
         auth = Firebase.auth
 

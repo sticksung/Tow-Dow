@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import com.example.towdow.databinding.CardViewTowdowBinding.inflate
 import com.example.towdow.databinding.HomeFragmentBinding
 import com.example.towdow.databinding.ProfileFragmentBinding
@@ -32,7 +33,18 @@ class ProfileFragment : Fragment() {
             binding.tvName.text = user.email
         }
 
+        binding.signoutButton2.setOnClickListener {
+            Firebase.auth.signOut()
+            v.findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
+        }
 
+        binding.homeHomeButton4.setOnClickListener{
+            v.findNavController().navigate(R.id.action_profileFragment_to_homeFragment)
+        }
+
+        binding.homeSearchBotton4.setOnClickListener{
+            v.findNavController().navigate(R.id.action_profileFragment_to_searchFragment)
+        }
        // binding.myUsernameText.text = "John Doe"
         binding.shortDescription.text = "Hi! My name is John Doe and I'm a sophomore at Virginia Tech. I'm a computer science who loves Android Development!"
        // binding.myProfileImage.setImageResource(R.drawable.img)
