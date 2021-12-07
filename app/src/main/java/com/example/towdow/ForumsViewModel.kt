@@ -10,11 +10,4 @@ class ForumsViewModel(application: Application): AndroidViewModel(application) {
     fun setUserUID(UID: String) {
         currentUserUID = UID
     }
-
-    private val forumUsers = ArrayList<ArrayList<String>>()
-
-    fun addForum(name: String) {
-        val users = ArrayList<String>()
-
-    }
 }
