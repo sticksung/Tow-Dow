@@ -73,6 +73,14 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
 
         })
 
+        binding.homeSearchButton.setOnClickListener{
+            v.findNavController().navigate(R.id.action_searchFragment_to_homeFragment)
+        }
+
+        binding.profileSearchButton.setOnClickListener{
+            v.findNavController().navigate(R.id.action_searchFragment_to_profileFragment)
+        }
+
         return v
     }
 

@@ -38,23 +38,28 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+     //   (activity as MainActivity)..menu.getItem(1).isChecked = true
         _binding = HomeFragmentBinding.inflate(inflater,container, false)
         val v = binding.root
 
         database = Firebase.database.reference
 
-        val bottomNavigationView: BottomNavigationView = requireActivity().findViewById(com.example.towdow.R.id.bottomNavigationView)
-        bottomNavigationView.visibility = View.VISIBLE
+      //  val bottomNavigationView: BottomNavigationView = requireActivity().findViewById(com.example.towdow.R.id.bottomNavigationView)
+       // bottomNavigationView.visibility = View.VISIBLE
 
         binding.addCategoryImage.setImageResource(R.drawable.plus)
         binding.addCategoryImage.setOnClickListener {
             v.findNavController().navigate(R.id.action_homeFragment_to_forumCreateFragment)
         }
 
-        binding.signoutButton.setOnClickListener {
-            Firebase.auth.signOut()
-            v.findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
+        binding.homeSearchBotton.setOnClickListener{
+            v.findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
         }
+
+        binding.homeProfileButtom.setOnClickListener{
+            v.findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
+        }
+
 
         // Adapter stuff
         initArray(myTowDows)

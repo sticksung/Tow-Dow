@@ -38,8 +38,8 @@ class SignupFragment : Fragment() {
             //view?.findNavController()?.navigate(R.id.action_signupFragment_to_homeFragment)
         }
 
-        val bottomNavigationView: BottomNavigationView = requireActivity().findViewById(com.example.towdow.R.id.bottomNavigationView)
-        bottomNavigationView.visibility = View.GONE
+        //val bottomNavigationView: BottomNavigationView = requireActivity().findViewById(com.example.towdow.R.id.bottomNavigationView)
+       // bottomNavigationView.visibility = View.GONE
         auth = Firebase.auth
 
         return v

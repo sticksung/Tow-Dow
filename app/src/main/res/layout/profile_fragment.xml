@@ -158,13 +158,13 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="563dp"
+        android:layout_height="434dp"
         android:layout_below="@+id/linlay1"
-        android:layout_marginTop="-151dp">
+        android:layout_marginTop="-20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
@@ -175,10 +175,97 @@
                 android:id="@+id/short_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
                 android:text="TextView"
                 android:textColor="@color/teal_700"
                 android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/signout_button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="55dp"
+                android:layout_marginEnd="0dp"
+                android:text="@string/sign_out"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/my_forums_list" />
         </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="415dp"
+                android:layout_height="106dp"
+                android:layout_marginTop="202dp"
+                android:background="#AEAFAF"
+                android:elevation="-1dp"
+                android:src="@android:drawable/screen_background_light_transparent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/home_text4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:text="@string/home"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/home_home_button4" />
+
+            <TextView
+                android:id="@+id/search_text4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="84dp"
+                android:text="@string/search"
+                app:layout_constraintStart_toEndOf="@+id/home_text4"
+                app:layout_constraintTop_toBottomOf="@+id/home_search_botton4" />
+
+            <ImageButton
+                android:id="@+id/home_profile_buttom4"
+                android:layout_width="85dp"
+                android:layout_height="76dp"
+                android:layout_marginEnd="34dp"
+                android:scaleType="fitEnd"
+                android:src="@drawable/profile1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+            <TextView
+                android:id="@+id/profiles_text4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="56dp"
+                android:text="@string/profile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/home_profile_buttom4" />
+
+            <ImageButton
+                android:id="@+id/home_search_botton4"
+                android:layout_width="85dp"
+                android:layout_height="76dp"
+                android:layout_marginStart="44dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/search1"
+                app:layout_constraintStart_toEndOf="@+id/home_home_button4"
+                app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+            <ImageButton
+                android:id="@+id/home_home_button4"
+                android:layout_width="85dp"
+                android:layout_height="76dp"
+                android:layout_marginStart="34dp"
+                android:scaleType="fitEnd"
+                android:src="@drawable/home1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </RelativeLayout>
 
