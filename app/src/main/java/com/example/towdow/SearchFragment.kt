@@ -29,7 +29,55 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
     val adapter = TowListAdapter()
     val myTowDows = ArrayList<TowDowData>()
     private lateinit var database: DatabaseReference
-    
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+
+        return true
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+
+        adapter.search(query)
+        return true
+    }
+
+
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.action_bar_menu, menu)
+
+        val item = menu.findItem(R.id.search_movie)
+        val searchView = item?.actionView as SearchView
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(item: String?): Boolean {
+                adapter.search(item)
+                return true
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                return true
+            }
+
+
+        })
+
+
+        //   val searchView: SearchView = searchItem.actionView as SearchView
+
+        searchView.setOnQueryTextListener(this)
+
+        //  return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+//            R.id.restore_list ->{
+//               //action to be performed
+//            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -42,7 +90,7 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
 
         setHasOptionsMenu(true)
 
-        binding.searchImageButton.setImageResource(R.drawable.search1)
+
         // Adapter stuff
         initArray(myTowDows)
         Log.d("Debug", myTowDows.toString())
@@ -77,6 +125,9 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
             v.findNavController().navigate(R.id.action_searchFragment_to_homeFragment)
         }
 
+        binding.restore.setOnClickListener{
+            adapter.restore()
+        }
         binding.profileSearchButton.setOnClickListener{
             v.findNavController().navigate(R.id.action_searchFragment_to_profileFragment)
         }
@@ -84,26 +135,7 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
         return v
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.action_bar_menu, menu)
 
-        val item = menu.findItem(R.id.search_movie)
-        val searchView = item?.actionView as SearchView
-        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(item: String?): Boolean {
-                //adapter.search(item)
-                return true
-            }
-
-            override fun onQueryTextChange(p0: String?): Boolean {
-                return true
-            }
-
-
-        })
-
-        searchView.setOnQueryTextListener(this)
-    }
     private fun initArray(myDataset: MutableList<TowDowData>){
         myDataset.clear()
 
@@ -112,15 +144,31 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
     inner class TowListAdapter():
         RecyclerView.Adapter<TowListAdapter.AddressViewHolder>(){
         var locations = emptyList<TowDowData>()
-
+        private var locationsBackup= emptyList<TowDowData>()
         override fun getItemCount(): Int {
             return locations.size
         }
 
         internal fun setLocations(locations: List<TowDowData>) {
             this.locations = locations
+            locationsBackup = locations
             notifyDataSetChanged()
         }
+        fun restore(){
+            locations = locationsBackup
+            notifyDataSetChanged()
+        }
+        fun search(query: String?) {
+            if (query != null) {
+                Log.d("Search", query)
+            }
+
+            locations = locations.filter{it.forum_name.contains(query!!, ignoreCase = true)}
+
+            notifyDataSetChanged()
+
+        }
+
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddressViewHolder {
             val v = LayoutInflater.from(parent.context)
                 .inflate(R.layout.card_view_towdow, parent, false)
@@ -154,21 +202,4 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
         }
     }
 
-    override fun onQueryTextSubmit(query: String?): Boolean {
-      //  adapter.search(query)
-        return true
-    }
-
-    override fun onQueryTextChange(p0: String?): Boolean {
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-//            R.id.restore_list ->{
-//               //action to be performed
-//            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
 }

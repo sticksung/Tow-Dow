@@ -85,37 +85,40 @@
             android:id="@+id/join_tow_dow_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="176dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="121dp"
+            android:layout_marginStart="128dp"
+            android:layout_marginTop="12dp"
             android:text="Find a Tow Dow"
             android:textColor="@color/purple_700"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/search_image_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/search_forums_list"
-            android:layout_width="405dp"
-            android:layout_height="452dp"
+            android:layout_width="410dp"
+            android:layout_height="408dp"
             android:layout_marginStart="1dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginEnd="1dp"
+            android:clipToPadding="false"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/join_tow_dow_text" />
+
+        <Button
+            android:id="@+id/restore"
+            android:layout_width="384dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginEnd="14dp"
+            android:text="Restore"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/search_image_button" />
-
-        <ImageView
-            android:id="@+id/search_image_button"
-            android:layout_width="29dp"
-            android:layout_height="28dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="4dp"
-            android:src="@drawable/ic_launcher_background"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/join_tow_dow_text" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

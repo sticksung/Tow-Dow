@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.towdow.databinding.HomeFragmentBinding
@@ -21,7 +22,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
-import com.google.gson.Gson
+
 import org.json.JSONArray
 import java.text.Normalizer
 import java.util.ArrayList
@@ -93,6 +94,39 @@ class HomeFragment : Fragment() {
             }
 
         })
+
+        val simpleItemTouchCallback: ItemTouchHelper.SimpleCallback = object :
+            ItemTouchHelper.SimpleCallback(
+                0,
+                ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT or ItemTouchHelper.DOWN or ItemTouchHelper.UP
+            ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                //do something
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, swipeDir: Int) {
+                val position = viewHolder.adapterPosition
+                // code remove swiped item
+                //notify the recyclerview changes
+                //Log.d("T05")
+                var current = model.locationItems?.get(position)
+                var currentLocationReferene = model.database.child(current!!.date)
+                Log.d("T05", currentLocationReferene.toString())
+                currentLocationReferene.removeValue()
+                //model.locations.postValue(model.locationItems)
+                //database.removeValue(current)
+                adapter.notifyDataSetChanged()
+
+            }
+        }
+
+        val itemTouchHelper = ItemTouchHelper(simpleItemTouchCallback)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
 
 
 

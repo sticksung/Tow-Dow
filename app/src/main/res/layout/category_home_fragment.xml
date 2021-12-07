@@ -15,36 +15,35 @@
             android:id="@+id/category_name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="177dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="176dp"
+            android:layout_marginStart="152dp"
+            android:layout_marginTop="16dp"
             android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/purple_500"
+            android:textSize="24sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/forum_posts_list"
-            android:layout_width="413dp"
-            android:layout_height="377dp"
-            android:layout_marginStart="1dp"
-            android:layout_marginTop="14dp"
-            android:layout_marginEnd="1dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="416dp"
+            android:layout_height="590dp"
+            android:layout_marginTop="15dp"
+            android:clipToPadding="false"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/category_name_text" />
+            app:layout_constraintTop_toBottomOf="@+id/create_post_image" />
 
         <ImageView
             android:id="@+id/create_post_image"
-            android:layout_width="61dp"
-            android:layout_height="55dp"
-            android:layout_marginStart="349dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="1dp"
+            android:layout_width="53dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
             android:src="@drawable/ic_launcher_background"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/forum_posts_list" />
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

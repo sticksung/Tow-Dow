@@ -40,6 +40,7 @@ class ForumHomeFragment : Fragment() {
             view?.findNavController()?.navigate(R.id.action_forumHomeFragment_to_createCategoryFragment)
         }
 
+      //  binding.forumTitleText.text = "Science"
 
         // Adapter stuff
         initArray(myTowDows)
