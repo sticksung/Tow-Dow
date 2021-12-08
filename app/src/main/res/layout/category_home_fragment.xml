@@ -15,7 +15,7 @@
             android:id="@+id/category_name_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="152dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="TextView"
             android:textColor="@color/purple_500"

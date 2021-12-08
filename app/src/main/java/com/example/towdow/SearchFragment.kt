@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.towdow.databinding.SearchFragmentBinding
 
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -189,8 +188,8 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
         }
         override fun onBindViewHolder(holder: AddressViewHolder, position: Int) {
 
-            holder.view.findViewById<TextView>(R.id.towdow_name).text=locations[position].name
-            holder.view.findViewById<TextView>(R.id.short_description).text=locations[position].short_description
+            holder.view.findViewById<TextView>(R.id.reply_user_text).text=locations[position].name
+            holder.view.findViewById<TextView>(R.id.reply_text).text=locations[position].short_description
 
             holder.itemView.setOnClickListener(){
                 val bundle = Bundle()

@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.findNavController
 import com.example.towdow.databinding.HomeFragmentBinding
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -23,6 +24,8 @@ class CreatePostFragment : Fragment() {
     private lateinit var forumName: String
     private lateinit var categoryName: String
     private lateinit var postName: String
+
+    private val user = Firebase.auth.currentUser
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,19 +55,20 @@ class CreatePostFragment : Fragment() {
             }
             else {
                 postName = view.findViewById<TextView>(R.id.post_title_enter).text.toString()
-                println("PostName: " + postName)
+                //println("PostName: " + postName)
                 writeNewPost(view.findViewById<TextView>(R.id.post_title_enter).text.toString(), view.findViewById<TextView>(R.id.post_description_enter).text.toString())
                 val bundle = Bundle()
                 bundle.putString("post", view.findViewById<TextView>(R.id.post_title_enter).text.toString())
                 bundle.putString("forum", forumName)
                 bundle.putString("category", categoryName)
+                bundle.putString("description", view.findViewById<TextView>(R.id.post_description_enter).text.toString())
                 view.findNavController().navigate(R.id.action_createPostFragment_to_categoryHomeFragment, bundle)
             }
         }
     }
 
     private fun writeNewPost(name: String, description: String) {
-        val post = Post(name, description)
+        val post = Post(name, description, user?.email)
 
         database.child("Forums").child(forumName).child("Categories").child(categoryName).child("Posts").child(postName).setValue(post)
     }

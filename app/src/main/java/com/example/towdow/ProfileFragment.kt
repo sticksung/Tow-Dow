@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.navigation.findNavController
 import com.example.towdow.databinding.CardViewTowdowBinding.inflate
 import com.example.towdow.databinding.HomeFragmentBinding
@@ -46,7 +47,7 @@ class ProfileFragment : Fragment() {
             v.findNavController().navigate(R.id.action_profileFragment_to_searchFragment)
         }
        // binding.myUsernameText.text = "John Doe"
-        binding.shortDescription.text = "Hi! My name is John Doe and I'm a sophomore at Virginia Tech. I'm a computer science who loves Android Development!"
+        v.findViewById<TextView>(R.id.reply_text).text = "Hi! My name is John Doe and I'm a sophomore at Virginia Tech. I'm a computer science who loves Android Development!"
        // binding.myProfileImage.setImageResource(R.drawable.img)
         return v
     }

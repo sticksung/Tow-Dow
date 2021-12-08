@@ -4,18 +4,12 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.inflate
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.towdow.databinding.ActivityMainBinding.inflate
-import com.example.towdow.databinding.ForumHomeFragmentBinding
-import com.example.towdow.databinding.HomeFragmentBinding
-import com.example.towdow.databinding.SignupFragmentBinding.inflate
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -119,8 +113,8 @@ class ForumHomeFragment : Fragment() {
         }
         override fun onBindViewHolder(holder: AddressViewHolder, position: Int) {
 
-            holder.view.findViewById<TextView>(R.id.towdow_name).text=locations[position].name
-            holder.view.findViewById<TextView>(R.id.short_description).text=locations[position].short_description
+            holder.view.findViewById<TextView>(R.id.reply_user_text).text=locations[position].name
+            holder.view.findViewById<TextView>(R.id.reply_text).text=locations[position].short_description
 
             holder.itemView.setOnClickListener(){
                 val bundle = Bundle()
@@ -135,8 +129,6 @@ class ForumHomeFragment : Fragment() {
             }
 
         }
-
-
 
         inner class AddressViewHolder(val view: View): RecyclerView.ViewHolder(view), View.OnClickListener{
             override fun onClick(view: View?){

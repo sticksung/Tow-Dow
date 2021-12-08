@@ -15,18 +15,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.towdow.databinding.HomeFragmentBinding
 
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
 
-import org.json.JSONArray
-import java.text.Normalizer
 import java.util.ArrayList
 
 
@@ -185,8 +181,8 @@ class HomeFragment : Fragment() {
 
         override fun onBindViewHolder(holder: AddressViewHolder, position: Int) {
 
-            holder.view.findViewById<TextView>(R.id.towdow_name).text=locations[position].name
-            holder.view.findViewById<TextView>(R.id.short_description).text=locations[position].short_description
+            holder.view.findViewById<TextView>(R.id.reply_user_text).text=locations[position].name
+            holder.view.findViewById<TextView>(R.id.reply_text).text=locations[position].short_description
 
             holder.itemView.setOnClickListener(){
                 val bundle = Bundle()
