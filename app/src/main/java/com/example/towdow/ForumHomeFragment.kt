@@ -44,55 +44,6 @@ class ForumHomeFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.forum_home_fragment, container, false)
 
-        //binding = ForumHomeFragmentBinding.inflate(inflater)
-
-//        database = Firebase.database.reference
-//
-//        plus = view.findViewById(R.id.add_category_image)
-//        plus.setImageResource(R.drawable.plus);
-//        plus.setOnClickListener {
-//            val bundle = Bundle()
-//            bundle.putString("name", forumName)
-//            view?.findNavController()?.navigate(R.id.action_forumHomeFragment_to_createCategoryFragment)
-//        }
-
-//        view.findViewById<TextView>(R.id.forum_title_text).text = forumName
-//
-//        view.findViewById<Button>(R.id.delete_forum_button).setOnClickListener {
-//            database.child("Forums").addListenerForSingleValueEvent(object: ValueEventListener {
-//                override fun onDataChange(snapshot: DataSnapshot) {
-//                    for (i in snapshot.children) {
-//                        val forum: Forum = i.getValue(Forum::class.java)!!
-//
-//                        if (user != null) {
-//                            if (forum.users.contains(user.uid)) {
-//                                if (forum.name == forumName) {
-//                                    forum.users.remove(user.uid)
-//                                    println("Removed?" +  forum.users.remove(user.uid))
-//                                    view?.findNavController()?.navigate(R.id.action_forumHomeFragment_to_homeFragment)
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//
-//                override fun onCancelled(error: DatabaseError) {
-//                    TODO("Not yet implemented")
-//                }
-//
-//            })
-//        }
-
-      //  binding.forumTitleText.text = "Science"
-
-        // Adapter stuff
-//        initArray(myTowDows)
-//        recyclerView = view.findViewById(R.id.forum_categories_list)
-//        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-//        recyclerView.adapter = adapter
-//        adapter.setLocations(myTowDows)
-
-
         return view
     }
 
@@ -112,31 +63,6 @@ class ForumHomeFragment : Fragment() {
 
         view.findViewById<TextView>(R.id.forum_title_text).text = forumName
 
-//        view.findViewById<Button>(R.id.delete_forum_button).setOnClickListener {
-//            database.child("Forums").addListenerForSingleValueEvent(object: ValueEventListener {
-//                override fun onDataChange(snapshot: DataSnapshot) {
-//                    for (i in snapshot.children) {
-//                        val forum: Forum = i.getValue(Forum::class.java)!!
-//
-//                        if (user != null) {
-//                            if (forum.users.contains(user.uid)) {
-//                                if (forum.name == forumName) {
-//                                    forum.users.remove(user.uid)
-//                                    println("Removed?" +  forum.users.remove(user.uid))
-//                                    view.findNavController().navigate(R.id.action_forumHomeFragment_to_homeFragment)
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//
-//                override fun onCancelled(error: DatabaseError) {
-//                    TODO("Not yet implemented")
-//                }
-//
-//            })
-//        }
-
         initArray(myTowDows)
         recyclerView = view.findViewById(R.id.forum_categories_list)
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
@@ -146,7 +72,6 @@ class ForumHomeFragment : Fragment() {
         database.child("Forums").child(forumName).child("Categories").addListenerForSingleValueEvent(object:ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (i in snapshot.children) {
-                    println("Type of snapshot in Categories" + i.toString())
                     val category: Category? = i.getValue(Category::class.java)
                     myTowDows.add(TowDowData(category?.name!!, category.description!!))
                 }
@@ -194,11 +119,13 @@ class ForumHomeFragment : Fragment() {
         }
         override fun onBindViewHolder(holder: AddressViewHolder, position: Int) {
 
-            holder.view.findViewById<TextView>(R.id.towdow_name).text=locations[position].forum_name
+            holder.view.findViewById<TextView>(R.id.towdow_name).text=locations[position].name
             holder.view.findViewById<TextView>(R.id.short_description).text=locations[position].short_description
 
             holder.itemView.setOnClickListener(){
                 val bundle = Bundle()
+                bundle.putString("category", locations[position].name)
+                bundle.putString("forum", forumName)
                 // bundle.putDouble("lat", locations[position].lat)
                 //  bundle.putDouble("long", locations[position].long)
                 // Log.d("T05", "In home fragment Lat: ${locations[position].lat} Long: ${locations[position].lat}")

@@ -6,6 +6,8 @@ import android.view.*
 import android.widget.SearchView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -29,6 +31,7 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
     val adapter = TowListAdapter()
     val myTowDows = ArrayList<TowDowData>()
     private lateinit var database: DatabaseReference
+    val model: MyViewModel by viewModels()
 
     override fun onQueryTextChange(newText: String?): Boolean {
 
@@ -86,6 +89,21 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
         _binding = SearchFragmentBinding.inflate(inflater,container, false)
         val v = binding.root
 
+        recyclerView = binding.searchForumsList
+        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        recyclerView.adapter = adapter
+        adapter.setLocations(myTowDows)
+
+        model.forums.observe(
+            viewLifecycleOwner,
+            Observer<List<TowDowData>>{ tows ->
+                tows?.let{
+                    adapter.setLocations(it)
+                    Log.d("T05", it.toString())
+                }
+            }
+        )
+
         database = Firebase.database.reference
 
         setHasOptionsMenu(true)
@@ -98,19 +116,14 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
         database.child("Forums").addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (i in snapshot.children) {
-                    println("Init" + i.value.toString())
-                    var str = i.value.toString()
-                    str = str.substringAfter("name=")
-                    val name = str.substringBefore(",")
-                    str = str.substringAfter(", description=")
-                    val description = str.substringBefore("}")
+                    val forum: Forum = i.getValue(Forum::class.java)!!
 
-                    myTowDows.add(TowDowData(name, description))
-                    println(myTowDows.toString())
+                    model.forumItems?.add(TowDowData(forum.name!!, forum.description!!))
+                    model.forums.postValue(model.forumItems)
                 }
 
-                recyclerView = binding.searchForumsList
-                recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+                //recyclerView = binding.searchForumsList
+                //recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
                 recyclerView.adapter = adapter
                 adapter.setLocations(myTowDows)
             }
@@ -163,7 +176,7 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
                 Log.d("Search", query)
             }
 
-            locations = locations.filter{it.forum_name.contains(query!!, ignoreCase = true)}
+            locations = locations.filter{it.name.contains(query!!, ignoreCase = true)}
 
             notifyDataSetChanged()
 
@@ -176,7 +189,7 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
         }
         override fun onBindViewHolder(holder: AddressViewHolder, position: Int) {
 
-            holder.view.findViewById<TextView>(R.id.towdow_name).text=locations[position].forum_name
+            holder.view.findViewById<TextView>(R.id.towdow_name).text=locations[position].name
             holder.view.findViewById<TextView>(R.id.short_description).text=locations[position].short_description
 
             holder.itemView.setOnClickListener(){

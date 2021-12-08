@@ -28,24 +28,6 @@ class CreateCategoryFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.create_category_fragment, container, false)
 
-//        database = Firebase.database.reference
-//
-//        view.findViewById<Button>(R.id.submit_button).setOnClickListener {
-//            if (view.findViewById<TextView>(R.id.section_name_enter).text.isEmpty()) {
-//                view.findViewById<TextView>(R.id.section_name_enter).error = "Please enter name"
-//                view.findViewById<TextView>(R.id.section_name_enter).requestFocus()
-//            }
-//            else if (view.findViewById<TextView>(R.id.short_description_enter).text.isEmpty()) {
-//                view.findViewById<TextView>(R.id.short_description_enter).error = "Please enter description"
-//                view.findViewById<TextView>(R.id.short_description_enter).requestFocus()
-//            }
-//            else {
-//                categoryName = view.findViewById<TextView>(R.id.section_name_enter).text.toString()
-//                writeNewCategory(view.findViewById<TextView>(R.id.section_name_enter).text.toString(), view.findViewById<TextView>(R.id.short_description_enter).text.toString())
-//                view?.findNavController()?.navigate(R.id.action_createCategoryFragment_to_categoryHomeFragment)
-//            }
-//        }
-
         return view
     }
 

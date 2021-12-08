@@ -148,6 +148,9 @@
         <action
             android:id="@+id/action_createPostFragment_self"
             app:destination="@id/createPostFragment" />
+        <action
+            android:id="@+id/action_createPostFragment_to_categoryHomeFragment"
+            app:destination="@id/categoryHomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/createCategoryFragment"

@@ -130,7 +130,7 @@ class HomeFragment : Fragment() {
                 //notify the recyclerview changes
                 //Log.d("T05")
                 var current = model.forumItems?.get(position)
-                var currentLocationReferene = database.child("Forums").child(current!!.forum_name)
+                var currentLocationReferene = database.child("Forums").child(current!!.name)
                 Log.d("T05", currentLocationReferene.toString())
                 currentLocationReferene.removeValue()
                 //model.forums.postValue(model.locationItems)
@@ -157,7 +157,6 @@ class HomeFragment : Fragment() {
         RecyclerView.Adapter<ForumAdapter.AddressViewHolder>(){
         var locations = emptyList<TowDowData>()
         var users = ArrayList<String>()
-        val forums = ArrayList<ArrayList<String>>()
        // var currentForum = String?
 
         override fun getItemCount(): Int {
@@ -186,12 +185,12 @@ class HomeFragment : Fragment() {
 
         override fun onBindViewHolder(holder: AddressViewHolder, position: Int) {
 
-            holder.view.findViewById<TextView>(R.id.towdow_name).text=locations[position].forum_name
+            holder.view.findViewById<TextView>(R.id.towdow_name).text=locations[position].name
             holder.view.findViewById<TextView>(R.id.short_description).text=locations[position].short_description
 
             holder.itemView.setOnClickListener(){
                 val bundle = Bundle()
-                bundle.putString("name", locations[position].forum_name)
+                bundle.putString("name", locations[position].name)
                 // bundle.putDouble("lat", locations[position].lat)
                 //  bundle.putDouble("long", locations[position].long)
                 // Log.d("T05", "In home fragment Lat: ${locations[position].lat} Long: ${locations[position].lat}")

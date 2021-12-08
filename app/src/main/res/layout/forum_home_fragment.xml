@@ -49,16 +49,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/delete_forum_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="158dp"
-            android:layout_marginTop="23dp"
-            android:layout_marginEnd="159dp"
-            android:text="@string/remove"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/forum_categories_list" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
