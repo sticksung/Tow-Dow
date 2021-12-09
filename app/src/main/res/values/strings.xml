@@ -25,7 +25,7 @@
     <string name="create_a_new_category">Create a new Category</string>
     <string name="enter_section_name">Enter Section Name</string>
     <string name="enter_description">Enter description</string>
-    <string name="create_a_new_forum">Create a new Forum</string>
+    <string name="create_a_new_forum">Create a Forum</string>
     <string name="enter_forum_name">Enter forum name</string>
     <string name="enter_a_description">Enter a description</string>
     <string name="create_forum">Create Forum</string>
@@ -43,4 +43,5 @@
     <string name="finish">Finish</string>
     <string name="remove">REMOVE</string>
     <string name="add">Add</string>
+    <string name="give_your_post_a_title">Give your post a title</string>
 </resources>

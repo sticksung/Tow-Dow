@@ -10,58 +10,69 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="14dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="30"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/create_category_text">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/post_title_enter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/enter_section_name"
+                android:maxLength="30"
+                android:singleLine="true" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout2"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="14dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="150"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/post_description_enter"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:hint="@string/enter_a_description"
+                android:maxLength="150"
+                android:singleLine="false" />
+        </com.google.android.material.textfield.TextInputLayout>
+
         <TextView
             android:id="@+id/create_category_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="83dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginEnd="84dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="128dp"
             android:text="@string/create_a_new_category"
+            android:textColor="@color/purple_500"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/section_name_enter"
-            android:layout_width="351dp"
-            android:layout_height="54dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="45dp"
-            android:layout_marginEnd="30dp"
-            android:ems="10"
-            android:hint="@string/enter_section_name"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/create_category_text" />
-
-        <EditText
-            android:id="@+id/short_description_enter"
-            android:layout_width="347dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="34dp"
-            android:layout_marginEnd="32dp"
-            android:ems="10"
-            android:hint="@string/enter_description"
-            android:inputType="textPersonName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/section_name_enter" />
 
         <Button
             android:id="@+id/submit_button"
             android:layout_width="374dp"
             android:layout_height="48dp"
             android:layout_marginStart="18dp"
-            android:layout_marginTop="34dp"
+            android:layout_marginTop="35dp"
             android:layout_marginEnd="19dp"
             android:text="@string/submit"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/short_description_enter" />
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

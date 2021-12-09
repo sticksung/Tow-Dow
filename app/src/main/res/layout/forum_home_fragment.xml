@@ -20,7 +20,7 @@
             android:layout_marginEnd="180dp"
             android:text="TextView"
             android:textColor="@color/purple_500"
-            android:textSize="24sp"
+            android:textSize="22dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.428"
@@ -29,9 +29,11 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/forum_categories_list"
-            android:layout_width="404dp"
-            android:layout_height="410dp"
-            android:layout_marginTop="43dp"
+            android:layout_width="412dp"
+            android:layout_height="414dp"
+            android:layout_marginTop="35dp"
+            android:background="#F6F0F0"
+            android:backgroundTint="#E8E8E8"
             android:clipToPadding="false"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
@@ -48,6 +50,50 @@
             android:src="@drawable/ic_launcher_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/no_forumns_text"
+            android:layout_width="218dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginEnd="96dp"
+            android:text="  "
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/home_home_button2"
+            android:layout_width="85dp"
+            android:layout_height="76dp"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="4dp"
+            android:scaleType="fitEnd"
+            android:src="@drawable/home1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/forum_categories_list" />
+
+        <TextView
+            android:id="@+id/home_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="184dp"
+            android:text="@string/home"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_home_button2" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="415dp"
+            android:layout_height="106dp"
+            android:background="#AEAFAF"
+            android:elevation="-1dp"
+            android:src="@android:drawable/screen_background_light_transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/forum_categories_list" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

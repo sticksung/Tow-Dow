@@ -121,6 +121,9 @@
         <action
             android:id="@+id/action_categoryHomeFragment_to_createPostFragment"
             app:destination="@id/createPostFragment" />
+        <action
+            android:id="@+id/action_categoryHomeFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/forumPostFragment"
@@ -130,6 +133,9 @@
         <action
             android:id="@+id/action_forumPostFragment_to_replyFragment"
             app:destination="@id/replyFragment" />
+        <action
+            android:id="@+id/action_forumPostFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/forumCreateFragment"

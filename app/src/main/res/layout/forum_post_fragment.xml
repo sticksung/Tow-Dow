@@ -10,11 +10,43 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageButton
+            android:id="@+id/home_home_button5"
+            android:layout_width="85dp"
+            android:layout_height="76dp"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="4dp"
+            android:scaleType="fitEnd"
+            android:src="@drawable/home1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView4" />
+
+        <TextView
+            android:id="@+id/home_text5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="184dp"
+            android:text="@string/home"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_home_button5" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="415dp"
+            android:layout_height="106dp"
+            android:background="#AEAFAF"
+            android:elevation="-1dp"
+            android:src="@android:drawable/screen_background_light_transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reply_list" />
+
         <TextView
             android:id="@+id/post_title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="@string/title"
             android:textColor="@color/purple_500"
@@ -28,18 +60,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="8dp"
             android:text="@string/description"
+            android:textColor="#000000"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/username_text" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/reply_list"
-            android:layout_width="415dp"
-            android:layout_height="367dp"
+            android:layout_width="408dp"
+            android:layout_height="383dp"
             android:layout_marginStart="1dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="1dp"
+            android:background="#774040"
+            android:backgroundTint="#E8E8E8"
             android:clipToPadding="false"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
@@ -49,8 +84,8 @@
 
         <Button
             android:id="@+id/reply_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="99dp"
+            android:layout_height="44dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:text="@string/reply"
@@ -62,8 +97,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="72dp"
+            android:layout_marginTop="48dp"
             android:text="TextView"
+            android:textColor="#000000"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

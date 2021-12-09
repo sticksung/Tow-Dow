@@ -24,33 +24,27 @@
                 android:id="@+id/reply_text"
                 android:layout_width="393dp"
                 android:layout_height="71dp"
-                android:layout_marginStart="1dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="4dp"
+                android:layout_marginStart="9dp"
                 android:padding="5dp"
                 android:text="description"
                 android:textColor="@color/teal_700"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/reply_user_text" />
 
             <TextView
                 android:id="@+id/reply_user_text"
                 android:layout_width="373dp"
                 android:layout_height="38dp"
-                android:layout_marginStart="1dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginBottom="6dp"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="1dp"
                 android:background="@color/white"
                 android:padding="5dp"
                 android:text="Name: "
                 android:textColor="@color/purple_500"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/reply_text" />
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </RelativeLayout>

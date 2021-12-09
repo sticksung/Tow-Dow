@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,6 +28,8 @@ class ForumPostFragment : Fragment() {
     private lateinit var categoryName: String
     private lateinit var forumName: String
     private lateinit var description: String
+    private lateinit var home: ImageButton
+
     private lateinit var database: DatabaseReference
     private val user = Firebase.auth.currentUser
     private lateinit var recyclerView: RecyclerView
@@ -57,7 +60,10 @@ class ForumPostFragment : Fragment() {
         recyclerView.adapter = adapter
         adapter.setLocations(myTowDows)
 
-
+        home = view.findViewById(R.id.home_home_button5)
+        home.setOnClickListener {
+            view.findNavController().navigate(R.id.action_forumPostFragment_to_homeFragment)
+        }
         database.child("Forums").child(forumName).child("Categories").child(categoryName).child("Posts").addListenerForSingleValueEvent(object:
             ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

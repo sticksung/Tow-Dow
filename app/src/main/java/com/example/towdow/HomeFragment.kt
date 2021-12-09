@@ -98,6 +98,12 @@ class HomeFragment : Fragment() {
                 }
              //   adapter.setLocations(model.forums)
                 adapter.notifyDataSetChanged()
+
+                if (adapter.locations.isEmpty()){
+                    v.findViewById<TextView>(R.id.no_forumns_text2).text = "Nothing to see here - yet!"
+                }else{
+                    v.findViewById<TextView>(R.id.no_forumns_text2).text = " "
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {

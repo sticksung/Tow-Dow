@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@color/teal_200"
+    android:backgroundTint="#E8E8E8"
     tools:context=".HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,6 +12,18 @@
         android:layout_height="match_parent"
         android:backgroundTint="#651FFF"
         android:rotation="0">
+
+        <TextView
+            android:id="@+id/no_forumns_text2"
+            android:layout_width="218dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="76dp"
+            android:layout_marginEnd="92dp"
+            android:text="  "
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/my_tow_dow_text"
@@ -33,7 +45,8 @@
             android:layout_marginStart="1dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="1dp"
-            android:background="@color/white"
+            android:background="#190909"
+            android:backgroundTint="#E8E8E8"
             android:clipToPadding="false"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
