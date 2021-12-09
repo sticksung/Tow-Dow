@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.towdow.databinding.SearchFragmentBinding
+import com.google.firebase.auth.ktx.auth
 
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -31,6 +32,7 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
     val myTowDows = ArrayList<TowDowData>()
     private lateinit var database: DatabaseReference
     val model: MyViewModel by viewModels()
+    private val user = Firebase.auth.currentUser
 
     override fun onQueryTextChange(newText: String?): Boolean {
 
@@ -183,22 +185,48 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AddressViewHolder {
             val v = LayoutInflater.from(parent.context)
-                .inflate(R.layout.card_view_towdow, parent, false)
+                .inflate(R.layout.card_view_search, parent, false)
             return AddressViewHolder(v)
         }
         override fun onBindViewHolder(holder: AddressViewHolder, position: Int) {
 
+            val forumName = locations[position].name
             holder.view.findViewById<TextView>(R.id.reply_user_text).text=locations[position].name
             holder.view.findViewById<TextView>(R.id.reply_text).text=locations[position].short_description
 
-            holder.itemView.setOnClickListener(){
-                val bundle = Bundle()
-                // bundle.putDouble("lat", locations[position].lat)
-                //  bundle.putDouble("long", locations[position].long)
-                // Log.d("T05", "In home fragment Lat: ${locations[position].lat} Long: ${locations[position].lat}")
+//            holder.itemView.setOnClickListener(){
+//                val bundle = Bundle()
+//                // bundle.putDouble("lat", locations[position].lat)
+//                //  bundle.putDouble("long", locations[position].long)
+//                // Log.d("T05", "In home fragment Lat: ${locations[position].lat} Long: ${locations[position].lat}")
+//
+//                view?.findNavController()?.navigate(R.id.action_searchFragment_to_forumHomeFragment, bundle)
+//
+//            }
+            holder.view.findViewById<TextView>(R.id.add_forum_button).setOnClickListener {
+                database.child("Forums").addValueEventListener(object:ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        model.forumItems?.clear()
 
-                view?.findNavController()?.navigate(R.id.action_searchFragment_to_forumHomeFragment, bundle)
+                        for (i in snapshot.children) {
 
+                            val forum: Forum = i.getValue(Forum::class.java)!!
+
+                            if (forum.name == forumName) {
+                                if (user != null) {
+                                    forum.users.add(user.uid)
+                                }
+                            }
+                        }
+                        //   adapter.setLocations(model.forums)
+                        adapter.notifyDataSetChanged()
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        TODO("Not yet implemented")
+                    }
+
+                })
             }
 
         }
