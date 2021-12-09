@@ -3,6 +3,7 @@ package com.example.towdow
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Button
 import android.widget.SearchView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -194,16 +195,7 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
             holder.view.findViewById<TextView>(R.id.reply_user_text).text=locations[position].name
             holder.view.findViewById<TextView>(R.id.reply_text).text=locations[position].short_description
 
-//            holder.itemView.setOnClickListener(){
-//                val bundle = Bundle()
-//                // bundle.putDouble("lat", locations[position].lat)
-//                //  bundle.putDouble("long", locations[position].long)
-//                // Log.d("T05", "In home fragment Lat: ${locations[position].lat} Long: ${locations[position].lat}")
-//
-//                view?.findNavController()?.navigate(R.id.action_searchFragment_to_forumHomeFragment, bundle)
-//
-//            }
-            holder.view.findViewById<TextView>(R.id.add_forum_button).setOnClickListener {
+            holder.view.findViewById<Button>(R.id.add_forum_button).setOnClickListener {
                 database.child("Forums").addValueEventListener(object:ValueEventListener{
                     override fun onDataChange(snapshot: DataSnapshot) {
                         model.forumItems?.clear()
@@ -214,9 +206,20 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
 
                             if (forum.name == forumName) {
                                 if (user != null) {
-                                    forum.users.add(user.uid)
+                                    val users = ArrayList<String>()
+                                    users.add(user.uid)
+                                    for (b in forum.users) {
+                                        if (!users.contains(b)) {
+                                            users.add(b)
+                                        }
+                                    }
+                                    val description = forum.description
+                                    val forum = Forum(forumName, description, users)
+                                    database.child("Forums").child(forumName).setValue(forum)
+                                    break
                                 }
                             }
+                            break
                         }
                         //   adapter.setLocations(model.forums)
                         adapter.notifyDataSetChanged()
@@ -228,6 +231,10 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
 
                 })
             }
+
+            holder.itemView.setOnClickListener(){
+            }
+
 
         }
 
