@@ -80,7 +80,6 @@ class SignupFragment : Fragment() {
                             }
                     } else {
                         Log.d("Email", binding.createEmailEnter.text.toString())
-                        Log.d("THIS IS TAG", task.exception.toString())
                         // If sign in fails, display a message to the user.
                         Toast.makeText(context, "Authentication failed.",
                             Toast.LENGTH_SHORT).show()

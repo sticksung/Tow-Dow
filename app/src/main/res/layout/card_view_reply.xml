@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardElevation="4dp"
@@ -15,28 +16,43 @@
         android:background="@color/white"
         android:backgroundTint="@color/white">
 
-        <TextView
-            android:id="@+id/reply_user_text"
-            android:layout_width="145dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="15dp"
-            android:background="@color/white"
-            android:padding="5dp"
-            android:text="Name: "
-            android:textColor="@color/purple_500"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/reply_text"
-            android:layout_width="364dp"
-            android:layout_height="56dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="60dp"
-            android:padding="5dp"
-            android:text="description"
-            android:textColor="@color/teal_700" />
+            <TextView
+                android:id="@+id/reply_text"
+                android:layout_width="393dp"
+                android:layout_height="71dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="4dp"
+                android:padding="5dp"
+                android:text="description"
+                android:textColor="@color/teal_700"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/reply_user_text"
+                android:layout_width="373dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="6dp"
+                android:background="@color/white"
+                android:padding="5dp"
+                android:text="Name: "
+                android:textColor="@color/purple_500"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/reply_text" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </RelativeLayout>
+
 </androidx.cardview.widget.CardView>
