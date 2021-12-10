@@ -71,7 +71,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="40dp"
             android:ems="10"
-            android:hint="Create Password"
+            android:hint="Enter Password"
             android:inputType="textPassword"
             android:minHeight="48dp"
             app:layout_constraintEnd_toEndOf="parent"

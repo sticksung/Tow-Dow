@@ -99,7 +99,7 @@ class LoginFragment : Fragment() {
             }
         }
         else {
-            Toast.makeText(context, "Login failed.",
+            Toast.makeText(context, "Login failed/Logged out",
                 Toast.LENGTH_SHORT).show()
         }
     }
