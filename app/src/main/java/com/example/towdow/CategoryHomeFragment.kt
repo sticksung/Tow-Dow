@@ -87,7 +87,7 @@ class CategoryHomeFragment : Fragment() {
                 for (i in snapshot.children) {
                     val post: Post? = i.getValue(Post::class.java)
 //                    println("snap: " + post.toString())
-                    myTowDows.add(TowDowData(post?.name!!, post.username!!))
+                    myTowDows.add(0, TowDowData(post?.name!!, post.username!!))
                 }
 
 //                recyclerView = binding.myForumsList
