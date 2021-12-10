@@ -196,15 +196,13 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
             holder.view.findViewById<TextView>(R.id.reply_text).text=locations[position].short_description
 
             holder.view.findViewById<Button>(R.id.add_forum_button).setOnClickListener {
-                holder.view.findViewById<Button>(R.id.add_forum_button).text = "Added!"
-                holder.view.findViewById<Button>(R.id.add_forum_button).isClickable = false
-                holder.view.findViewById<Button>(R.id.add_forum_button).isEnabled = false
-                database.child("Forums").addValueEventListener(object:ValueEventListener{
+
+                database.child("Forums").addListenerForSingleValueEvent(object:ValueEventListener{
                     override fun onDataChange(snapshot: DataSnapshot) {
-                        model.forumItems?.clear()
+
+                        //model.forumItems?.clear()
 
                         for (i in snapshot.children) {
-
                             val forum: Forum = i.getValue(Forum::class.java)!!
 
                             if (forum.name == forumName) {
@@ -216,13 +214,10 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
                                             users.add(b)
                                         }
                                     }
-                                    val description = forum.description
-                                    val forum = Forum(forumName, description, users)
-                                    database.child("Forums").child(forumName).setValue(forum)
-                                    break
+                                    database.child("Forums").child("$forumName/users").setValue(users)
+                                    return
                                 }
                             }
-                            break
                         }
                         //   adapter.setLocations(model.forums)
                         adapter.notifyDataSetChanged()
@@ -235,7 +230,8 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
                 })
             }
 
-
+            holder.itemView.setOnClickListener(){
+            }
 
 
         }

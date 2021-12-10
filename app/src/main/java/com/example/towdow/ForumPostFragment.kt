@@ -92,7 +92,7 @@ class ForumPostFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (i in snapshot.children) {
                     val reply: Reply? = i.getValue(Reply::class.java)
-                    myTowDows.add(TowDowData(reply?.username.toString(), reply?.reply.toString()))
+                    myTowDows.add(myTowDows.size, TowDowData(reply?.username.toString(), reply?.reply.toString()))
                 }
 
                 recyclerView.adapter = adapter
