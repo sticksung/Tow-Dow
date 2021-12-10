@@ -1,7 +1,6 @@
 package com.example.towdow
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.navigation.findNavController
-import com.example.towdow.databinding.HomeFragmentBinding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -37,17 +35,17 @@ class CreateCategoryFragment : Fragment() {
         database = Firebase.database.reference
 
         view.findViewById<Button>(R.id.submit_button).setOnClickListener {
-            if (view.findViewById<TextView>(R.id.section_name_enter).text.isEmpty()) {
-                view.findViewById<TextView>(R.id.section_name_enter).error = "Please enter name"
-                view.findViewById<TextView>(R.id.section_name_enter).requestFocus()
+            if (view.findViewById<TextView>(R.id.post_title_enter).text.isEmpty()) {
+                view.findViewById<TextView>(R.id.post_title_enter).error = "Please enter name"
+                view.findViewById<TextView>(R.id.post_title_enter).requestFocus()
             }
-            else if (view.findViewById<TextView>(R.id.short_description_enter).text.isEmpty()) {
-                view.findViewById<TextView>(R.id.short_description_enter).error = "Please enter description"
-                view.findViewById<TextView>(R.id.short_description_enter).requestFocus()
+            else if (view.findViewById<TextView>(R.id.post_description_enter).text.isEmpty()) {
+                view.findViewById<TextView>(R.id.post_description_enter).error = "Please enter description"
+                view.findViewById<TextView>(R.id.post_description_enter).requestFocus()
             }
             else {
-                categoryName = view.findViewById<TextView>(R.id.section_name_enter).text.toString()
-                writeNewCategory(view.findViewById<TextView>(R.id.section_name_enter).text.toString(), view.findViewById<TextView>(R.id.short_description_enter).text.toString())
+                categoryName = view.findViewById<TextView>(R.id.post_title_enter).text.toString()
+                writeNewCategory(view.findViewById<TextView>(R.id.post_title_enter).text.toString(), view.findViewById<TextView>(R.id.post_description_enter).text.toString())
                 val bundle = Bundle()
                 bundle.putString("name", forumName)
                 view.findNavController().navigate(R.id.action_createCategoryFragment_to_forumHomeFragment, bundle)

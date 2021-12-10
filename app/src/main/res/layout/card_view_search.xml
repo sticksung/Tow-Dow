@@ -22,10 +22,10 @@
 
             <TextView
                 android:id="@+id/reply_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="261dp"
+                android:layout_height="66dp"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="-5dp"
                 android:padding="5dp"
                 android:text="description"
                 android:textColor="@color/teal_700"
@@ -36,8 +36,8 @@
                 android:id="@+id/reply_user_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="4dp"
                 android:background="@color/white"
                 android:padding="5dp"
                 android:text="Name: "
@@ -51,12 +51,10 @@
                 android:id="@+id/add_forum_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="186dp"
-                android:layout_marginTop="33dp"
-                android:layout_marginEnd="2dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="4dp"
                 android:text="@string/add"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/reply_text"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

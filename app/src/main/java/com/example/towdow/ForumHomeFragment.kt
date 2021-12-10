@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
@@ -24,6 +25,7 @@ class ForumHomeFragment : Fragment() {
     //private lateinit var binding: ForumHomeFragmentBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var plus: ImageView
+    private lateinit var home: ImageButton
     private lateinit var forumName: String
 
     private lateinit var database: DatabaseReference
@@ -55,6 +57,11 @@ class ForumHomeFragment : Fragment() {
             view.findNavController().navigate(R.id.action_forumHomeFragment_to_createCategoryFragment, bundle)
         }
 
+        home = view.findViewById(R.id.home_home_button2)
+        home.setOnClickListener {
+            view.findNavController().navigate(R.id.action_forumHomeFragment_to_homeFragment)
+        }
+
         view.findViewById<TextView>(R.id.forum_title_text).text = forumName
 
         initArray(myTowDows)
@@ -74,6 +81,11 @@ class ForumHomeFragment : Fragment() {
 //                recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
                 recyclerView.adapter = adapter
                 adapter.setLocations(myTowDows)
+                if (adapter.locations.isEmpty()){
+                    view.findViewById<TextView>(R.id.no_forumns_text).text = "Nothing to see here - yet!"
+                }else{
+                    view.findViewById<TextView>(R.id.no_forumns_text).text = " "
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -81,6 +93,8 @@ class ForumHomeFragment : Fragment() {
             }
 
         })
+
+
     }
 
     private fun initArray(myDataset: MutableList<TowDowData>){
@@ -94,7 +108,7 @@ class ForumHomeFragment : Fragment() {
     }
     inner class CategoryAdapter():
         RecyclerView.Adapter<CategoryAdapter.AddressViewHolder>(){
-        private var locations = emptyList<TowDowData>()
+         var locations = emptyList<TowDowData>()
 
         override fun getItemCount(): Int {
             return locations.size

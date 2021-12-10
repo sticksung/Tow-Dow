@@ -11,6 +11,38 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="415dp"
+            android:layout_height="106dp"
+            android:background="#AEAFAF"
+            android:elevation="-1dp"
+            android:src="@android:drawable/screen_background_light_transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/forum_posts_list" />
+
+        <ImageButton
+            android:id="@+id/home_home_button3"
+            android:layout_width="85dp"
+            android:layout_height="76dp"
+            android:layout_marginStart="160dp"
+            android:layout_marginTop="4dp"
+            android:scaleType="fitEnd"
+            android:src="@drawable/home1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+        <TextView
+            android:id="@+id/home_text3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="184dp"
+            android:text="@string/home"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_home_button3" />
+
         <TextView
             android:id="@+id/category_name_text"
             android:layout_width="wrap_content"
@@ -26,9 +58,11 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/forum_posts_list"
-            android:layout_width="416dp"
-            android:layout_height="590dp"
+            android:layout_width="408dp"
+            android:layout_height="427dp"
             android:layout_marginTop="15dp"
+            android:background="#C6C0C0"
+            android:backgroundTint="#E8E8E8"
             android:clipToPadding="false"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"

@@ -196,8 +196,9 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
             holder.view.findViewById<TextView>(R.id.reply_text).text=locations[position].short_description
 
             holder.view.findViewById<Button>(R.id.add_forum_button).setOnClickListener {
-
-
+                holder.view.findViewById<Button>(R.id.add_forum_button).text = "Added!"
+                holder.view.findViewById<Button>(R.id.add_forum_button).isClickable = false
+                holder.view.findViewById<Button>(R.id.add_forum_button).isEnabled = false
                 database.child("Forums").addValueEventListener(object:ValueEventListener{
                     override fun onDataChange(snapshot: DataSnapshot) {
                         model.forumItems?.clear()
@@ -215,8 +216,9 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
                                             users.add(b)
                                         }
                                     }
-
-                                    database.child("Forums").child("$forumName/users").setValue(users)
+                                    val description = forum.description
+                                    val forum = Forum(forumName, description, users)
+                                    database.child("Forums").child(forumName).setValue(forum)
                                     break
                                 }
                             }
@@ -233,8 +235,7 @@ class SearchFragment : Fragment(), SearchView.OnQueryTextListener {
                 })
             }
 
-            holder.itemView.setOnClickListener(){
-            }
+
 
 
         }

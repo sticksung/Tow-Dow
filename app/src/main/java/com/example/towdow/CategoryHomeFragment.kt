@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
@@ -25,6 +26,8 @@ class CategoryHomeFragment : Fragment() {
     private lateinit var createPosts: ImageView
     private lateinit var database: DatabaseReference
     private lateinit var recyclerView: RecyclerView
+    private lateinit var home: ImageButton
+
     val adapter = TowListAdapter()
     val myTowDows = ArrayList<TowDowData>()
     private val user = Firebase.auth.currentUser
@@ -67,6 +70,10 @@ class CategoryHomeFragment : Fragment() {
             view.findNavController().navigate(R.id.action_categoryHomeFragment_to_createPostFragment, bundle)
         }
 
+        home = view.findViewById(R.id.home_home_button3)
+        home.setOnClickListener {
+            view.findNavController().navigate(R.id.action_categoryHomeFragment_to_homeFragment)
+        }
         // Adapter stuff
         initArray(myTowDows)
         recyclerView = view.findViewById(R.id.forum_posts_list)
